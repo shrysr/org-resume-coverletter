@@ -1,0 +1,301 @@
+#+STARTUP: showeverything
+#+LATEX_CLASS: article
+
+#+LATEX_CLASS_OPTIONS: [11pt,a4paper]
+#+OPTIONS: toc:nil num:nil date:nil title:nil author:nil prop:nil
+#+HTML_HEAD: <style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333;}h1{color:#1f4e79;border-bottom:2px solid #1f4e79;text-align:center;}h2{color:#1f4e79;border-bottom:1px solid #1f4e79;}h3{color:#333;margin-top:1em;}ul{margin-left:20px;}li{margin-bottom:5px;}a{color:#1f4e79;text-decoration:none;}a:hover{text-decoration:underline;}.header{text-align:center;margin-bottom:2em;padding:20px;}.contact-info{color:#666;margin-top:10px;}.job-entry{border-left:3px solid #1f4e79;padding-left:15px;margin-bottom:20px;}</style>
+#+LATEX_COMPILER: pdflatex
+#+LATEX_HEADER: \usepackage[margin=0.60in]{geometry}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{fontawesome5}
+#+LATEX_HEADER: \usepackage{array}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{calc}
+#+LATEX_HEADER: \definecolor{primary}{RGB}{70, 130, 180}
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{102, 102, 102}
+#+LATEX_HEADER: \definecolor{accent}{RGB}{47, 79, 79}
+#+LATEX_HEADER: \definecolor{light}{RGB}{128, 128, 128}
+#+LATEX_HEADER: \definecolor{highlight}{RGB}{0, 85, 128}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \setlength{\parskip}{0.05cm}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhf{}
+#+LATEX_HEADER: \fancyfoot[C]{\small\color{secondary}\thepage}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
+#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{}[\textcolor{primary}{\rule{\linewidth}{0.3pt}}\vspace{0.1cm}]
+#+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
+#+LATEX_HEADER: \titlespacing*{\section}{0pt}{0.4cm}{0.15cm}  
+#+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{0.2cm}{0.05cm}
+#+LATEX_HEADER: \setlist[itemize]{leftmargin=0.8em,itemsep=0.01cm,parsep=0pt,topsep=0.02cm,label=\resumebullet,font=\resumedescriptionsize\color{\resumedescriptioncolor}}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{lmodern}
+
+# Modify the following as required for the resume header for PDF
+#+LATEX_HEADER: \newcommand{\resumename}{Shreyas Ragavan}
+#+LATEX_HEADER: \newcommand{\resumesubtitle}{}
+#+LATEX_HEADER: \newcommand{\resumeemail}{shreyas@fastmail.com}
+#+LATEX_HEADER: \newcommand{\resumephone}{+1 279-258-9720 }
+#+LATEX_HEADER: \newcommand{\resumelinkedin}{https://linkedin.com/in/shreyasragavan}
+#+LATEX_HEADER: \newcommand{\resumewebsite}{https://shreyas.ragavan.co}
+#+LATEX_HEADER: \newcommand{\resumegithub}{https://github.com/shrysr}
+
+
+#+LATEX_HEADER: \newcommand{\namesubtitlespacing}{0.1cm}
+#+LATEX_HEADER: \newcommand{\subtitlecontactspacing}{0.2cm}
+#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.1cm}}
+#+LATEX_HEADER: \newcommand{\headername}{{\LARGE\bfseries\color{primary}\resumename}}
+#+LATEX_HEADER: \newcommand{\headersubtitle}{{\normalsize\color{secondary}\resumesubtitle}}
+#+LATEX_HEADER: \newcommand{\headeremail}{\textcolor{accent}{\faEnvelope} \href{mailto:\resumeemail}{\resumeemail}}
+#+LATEX_HEADER: \newcommand{\headerphone}{\textcolor{accent}{\faPhone} \resumephone}
+#+LATEX_HEADER: \newcommand{\headerlinkedin}{\textcolor{accent}{\faLinkedin} \href{\resumelinkedin}{\textcolor{primary}{LinkedIn}}}
+#+LATEX_HEADER: \newcommand{\headerwebsite}{\textcolor{accent}{\faGlobe} \href{\resumewebsite}{\textcolor{primary}{Website}}}
+#+LATEX_HEADER: \newcommand{\headergithub}{\textcolor{accent}{\faGithub} \href{\resumegithub}{\textcolor{primary}{Github}}}
+
+# Assembling the header 
+#+LATEX_HEADER: \AtBeginDocument{\begin{center}\headername\def\tempsubtitle{\resumesubtitle}\ifx\tempsubtitle\empty\else\\[\namesubtitlespacing]\headersubtitle\fi\\[\subtitlecontactspacing]{\small\headeremail $|$ \headerphone $|$ \headerlinkedin $|$ \headerwebsite $|$ \headergithub}\end{center}\headerspacing}
+
+#+OPTIONS: prop:t
+
+# Resume formatting configuration - easily editable  
+#+LATEX_HEADER: \newcommand{\resumeheadlinesep}{\textbar}
+#+LATEX_HEADER: \newcommand{\resumeperiodcolor}{light}
+#+LATEX_HEADER: \newcommand{\resumeperiodweight}{\textbf}
+#+LATEX_HEADER: \newcommand{\resumecompanycolor}{secondary}
+#+LATEX_HEADER: \newcommand{\resumebullet}{\textcolor{primary}{\scalebox{0.6}{\tiny$\blacksquare$}}}
+
+# Font size configuration - Compact for one-page fit
+#+LATEX_HEADER: \newcommand{\resumesectionsize}{\large}
+#+LATEX_HEADER: \newcommand{\resumepositionsize}{\normalsize}
+#+LATEX_HEADER: \newcommand{\resumedescriptionsize}{\small}
+#+LATEX_HEADER: \newcommand{\resumecompactsize}{\footnotesize}
+#+LATEX_HEADER: \newcommand{\resumedescriptioncolor}{secondary}
+#+LATEX_HEADER: \newcommand{\resumehighlightcolor}{highlight}
+
+# HTML configuration - Enhanced Corporate Elegance styling
+#+HTML_NAME_SIZE: 2.2em
+#+HTML_SECTION_SIZE: 1.6em
+#+HTML_POSITION_SIZE: 1.3em
+#+HTML_DESCRIPTION_SIZE: 1.0em
+#+HTML_COMPACT_SIZE: 0.9em
+#+HTML_PRIMARY_COLOR: #4682B4
+#+HTML_COMPANY_COLOR: #666666
+#+HTML_PERIOD_COLOR: #2F4F4F
+#+HTML_DESCRIPTION_COLOR: #666666
+#+HTML_HIGHLIGHT_COLOR: #005580
+
+#+BEGIN_SRC emacs-lisp :exports results :results none :eval export
+(defun resume-get-latex-command-value (command-name)
+  "Extract the value from a LaTeX newcommand definition in current buffer."
+  (save-excursion
+    (goto-char (point-min))
+    (when (re-search-forward (format "\\\\newcommand{\\\\%s}{\\([^}]*\\)}" command-name) nil t)
+      (match-string 1))))
+
+(defun resume-get-file-property (property-name)
+  "Get a file-level property from the current org buffer."
+  (save-excursion
+    (goto-char (point-min))
+    (when (re-search-forward (format "^#\\+%s: \\(.*\\)$" (upcase property-name)) nil t)
+      (match-string 1))))
+
+(defun resume-export-filter (text backend info)
+  "Clean up property verbatim blocks and format headlines with company/period."
+  (let ((name (or (resume-get-latex-command-value "resumename") "ERROR: resumename not defined"))
+        (email (or (resume-get-latex-command-value "resumeemail") "ERROR: resumeemail not defined"))
+        (phone (or (resume-get-latex-command-value "resumephone") "ERROR: resumephone not defined"))
+        (linkedin (or (resume-get-latex-command-value "resumelinkedin") "ERROR: resumelinkedin not defined"))
+        (website (or (resume-get-latex-command-value "resumewebsite") "ERROR: resumewebsite not defined"))
+        (github (or (resume-get-latex-command-value "resumegithub") "ERROR: resumegithub not defined"))
+        (html-name-size (or (resume-get-file-property "HTML_NAME_SIZE") "ERROR: HTML_NAME_SIZE not defined"))
+        (html-section-size (or (resume-get-file-property "HTML_SECTION_SIZE") "ERROR: HTML_SECTION_SIZE not defined"))
+        (html-position-size (or (resume-get-file-property "HTML_POSITION_SIZE") "ERROR: HTML_POSITION_SIZE not defined"))
+        (html-description-size (or (resume-get-file-property "HTML_DESCRIPTION_SIZE") "ERROR: HTML_DESCRIPTION_SIZE not defined"))
+        (html-compact-size (or (resume-get-file-property "HTML_COMPACT_SIZE") "ERROR: HTML_COMPACT_SIZE not defined"))
+        (html-primary-color (or (resume-get-file-property "HTML_PRIMARY_COLOR") "ERROR: HTML_PRIMARY_COLOR not defined"))
+        (html-company-color (or (resume-get-file-property "HTML_COMPANY_COLOR") "ERROR: HTML_COMPANY_COLOR not defined"))
+        (html-period-color (or (resume-get-file-property "HTML_PERIOD_COLOR") "ERROR: HTML_PERIOD_COLOR not defined"))
+        (html-description-color (or (resume-get-file-property "HTML_DESCRIPTION_COLOR") "ERROR: HTML_DESCRIPTION_COLOR not defined"))
+        (html-highlight-color (or (resume-get-file-property "HTML_HIGHLIGHT_COLOR") "ERROR: HTML_HIGHLIGHT_COLOR not defined")))
+    (cond 
+     ((eq backend 'latex)
+      ;; Remove property verbatim blocks  
+      (setq text (replace-regexp-in-string
+                  "\\\\begin{verbatim}\n\\(COMPANY\\|INSTITUTION\\|PERIOD\\|LOCATION\\): \\([^\n]*\\)\n\\(\\([A-Z]+: [^\n]*\n\\)*\\)\\\\end{verbatim}"
+                  "" text))
+      
+      ;; Format headlines using configurable colors
+      (org-element-map (plist-get info :parse-tree) 'headline
+        (lambda (headline)
+          (let* ((level (org-element-property :level headline))
+                 (title (org-element-interpret-data (org-element-property :title headline)))
+                 (company (org-element-property :COMPANY headline))
+                 (institution (org-element-property :INSTITUTION headline))  
+                 (period (org-element-property :PERIOD headline)))
+            (when (= level 2)
+              (let ((org-name (or company institution))
+                    (clean-title (string-trim title)))
+                (when (and org-name period)
+                  (let ((formatted-title (format "%s \\\\textbar\\\\ \\\\textcolor{\\\\resumecompanycolor}{%s} \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}"
+                                                 clean-title org-name period)))
+                    (setq text (replace-regexp-in-string 
+                                (format "\\\\subsection\\*{%s}" (regexp-quote clean-title))
+                                (format "\\\\subsection*{%s}" formatted-title)
+                                text))))))))))
+     
+     ((eq backend 'html)
+      ;; Remove property drawer blocks for HTML
+      (setq text (replace-regexp-in-string
+                  "<pre class=\"example\">\n\\(COMPANY\\|INSTITUTION\\|PERIOD\\|LOCATION\\): [^\n]*\n\\([A-Z]+: [^\n]*\n\\)*</pre>"
+                  "" text))
+      
+      ;; Add header and enhanced dynamic styles for HTML using configurable properties
+      (unless (string-match "<div class=\"header\">" text)
+        (let ((dynamic-styles (format "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">\n<style>\nbody { font-family: 'Segoe UI', 'Calibri', Arial, sans-serif; line-height: 1.4; color: #333; }\nh1 { font-size: %s !important; color: %s !important; font-weight: bold; margin-bottom: 0.3em; }\nh2 { font-size: %s !important; color: %s !important; border-bottom: 1px solid %s; padding-bottom: 0.2em; margin-top: 1.2em; margin-bottom: 0.6em; }\n.position { font-size: %s !important; display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.6em; margin-bottom: 0.2em; font-weight: 600; }\n.position .title-company { flex: 1; }\n.position .period { margin-left: auto; font-weight: bold; }\nul { margin-top: 0.3em; margin-bottom: 0.8em; }\nul li { font-size: %s !important; color: %s !important; margin-bottom: 0.1em; line-height: 1.3; }\n.header { text-align: center; margin-bottom: 1.5em; padding: 1em; border-bottom: 2px solid %s; }\n.contact-info { font-size: %s !important; color: %s; margin-top: 0.5em; }\n.contact-info i { margin-right: 0.4em; color: %s; }\n.contact-info a { color: %s; text-decoration: none; }\n.contact-info a:hover { text-decoration: underline; }\n</style>" 
+                                      html-name-size html-primary-color
+                                      html-section-size html-primary-color html-primary-color
+                                      html-position-size
+                                      html-description-size html-description-color
+                                      html-primary-color
+                                      html-compact-size html-description-color
+                                      html-period-color html-highlight-color)))
+          (setq text (replace-regexp-in-string
+                      "</head>"
+                      (concat dynamic-styles "\n</head>")
+                      text))
+          (setq text (replace-regexp-in-string
+                      "<div id=\"content\" class=\"content\">"
+                      (concat "<div id=\"content\" class=\"content\">\n"
+                              "<div class=\"header\">\n"
+                              (format "<h1 style=\"color: %s;\">%s</h1>\n" html-primary-color name)
+                              "<div class=\"contact-info\">\n"
+                              (format "<i class=\"fas fa-envelope\"></i>%s | \n" email)
+                              (format "<i class=\"fas fa-phone\"></i>%s | \n" phone)
+                              (format "<i class=\"fab fa-linkedin\"></i><a href=\"%s\" style=\"color: %s;\">LinkedIn</a> | \n" linkedin html-highlight-color)
+                              (format "<i class=\"fas fa-globe\"></i><a href=\"%s\" style=\"color: %s;\">Website</a> | \n" website html-highlight-color)
+                              (format "<i class=\"fab fa-github\"></i><a href=\"%s\" style=\"color: %s;\">GitHub</a>\n" github html-highlight-color)
+                              "</div>\n"
+                              "</div>")
+                      text))))
+      
+      ;; Format experience headlines for HTML using config
+      (org-element-map (plist-get info :parse-tree) 'headline
+        (lambda (headline)
+          (let* ((level (org-element-property :level headline))
+                 (title (org-element-interpret-data (org-element-property :title headline)))
+                 (company (org-element-property :COMPANY headline))
+                 (institution (org-element-property :INSTITUTION headline))  
+                 (period (org-element-property :PERIOD headline)))
+            (when (= level 2)
+              (let ((org-name (or company institution))
+                    (clean-title (string-trim title)))
+                (when (and org-name period)
+                  (let ((html-title (format "<span class=\"title-company\">%s | <span class=\"company\" style=\"color: %s;\">%s</span></span><span class=\"period\" style=\"color: %s; font-weight: bold;\">%s</span>"
+                                           clean-title 
+                                           html-company-color
+                                           org-name 
+                                           html-period-color
+                                           period)))
+                    (setq text (replace-regexp-in-string 
+                                (format "<h3[^>]*>%s</h3>" (regexp-quote clean-title))
+                                (format "<h3 class=\"position\" style=\"font-size: %s;\">%s</h3>" 
+                                        html-position-size html-title)
+                                text)))))))))))
+    text))
+
+(add-to-list 'org-export-filter-final-output-functions 'resume-export-filter)
+#+END_SRC
+
+* Experience
+
+** Sr. MLOps Engineer 
+   :PROPERTIES:
+   :COMPANY: Definity Financial
+   :PERIOD: June, 2022 - Present
+   :LOCATION: Vancouver, Canada
+   :END:
+
+- Developed and deployed statistical models, LLM applications, and rule-based systems on RStudio and Google Cloud, significantly enhancing business workflows and productivity at call centers and fraud detection.
+- Managed project lifecycles and on-time delivery, balancing technical debt and stakeholder expectations, while mentoring junior team members
+- Key contributor to improving operational efficiency and system reliability by establishing MLOps best practices and optimizing legacy processes
+
+** Analytics Engineer
+   :PROPERTIES:
+   :COMPANY: ReachStack
+   :PERIOD: Oct 2020 - May 2022
+   :LOCATION: Vancouver, Canada
+   :END:
+
+- Proposed & developed an analytics dashboard application using R (Shiny), including 30+ interactive charts, which enabled monitoring of KPI's related to email marketing campaigns.
+- Engineered data pipelines, self-serve applications for marketing campaign performance reports, reducing turnaround time by over 50%
+- Efficiently analyzed large-scale application logs (25 GB+) using Python + Bash, and also worked with SQL, Java and HTML in developing bug fixes
+
+** Data Science Consultant
+   :PROPERTIES:
+   :COMPANY: Self-employed
+   :PERIOD: Nov 2019 - Oct 2020
+   :LOCATION: Vancouver, Canada
+   :END:
+
+- Reduced ~30 min of analysis time per mortgage lead (~700 hrs/month), using a R based dashboard enabling a GLM to predict a score for lead conversion
+
+** Design Engineer 
+   :PROPERTIES:
+   :COMPANY: Clear Rush Co
+   :PERIOD: Aug 2018 - Nov 2019
+   :LOCATION: Alberta, Canada
+   :END:
+
+- Enabled data-driven decision-making by spearheading the implementation of an ERP system, resulting in enhanced sales & product lifecycle management
+- Leveraged domain knowledge to develop material codification and product master lists, optimizing inventory and order management efficiency
+- Streamlined data integration and tool transition by engineering an R-based ETL process to connect MySQL data with the ERP system
+
+** Application Engineer
+   :PROPERTIES:
+   :COMPANY: Zeeco Inc
+   :PERIOD: Aug 2015 - Aug 2017
+   :LOCATION: Mumbai Area, India
+   :END:
+
+- Managed end-to-end techno-commercial lifecycle of critical application products from sales to maintenance, coordinating with global stakeholders
+- Developed and negotiated proposals, cost estimations, and pricing strategies, ensuring clear purchase terms with diverse clients
+
+** Sr Executive Engineer
+   :PROPERTIES:
+   :COMPANY: Wilo Group
+   :PERIOD: Apr 2012 - Aug 2015
+   :LOCATION: Pune, India
+   :END:
+
+- Proposed & engineered a 75% reduction in runtime and 100% software license utilization improvement through a bespoke, python driven solution
+- Developed automated model runs & reports, saving 30 minutes of analysis time, and 4+ hours of large data transfer per design iteration
+
+* Skills
+
+- *Programming:* Python, SQL, R, Java, Bash
+- *Cloud & DevOps:* GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
+- *Data & Analytics:* BigQuery, Looker, Data Viz, Data Modeling, Cloud Composer (Airflow)
+- *ML & AI:* Vertex AI, LLM, Machine Learning, AI Engineering
+- *Tools & Platforms:* Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
+
+* Education
+
+** MSc. Advanced Mechanical Engineering
+   :PROPERTIES:
+   :INSTITUTION: University of Leeds, UK
+   :PERIOD: Sep 2010 - Nov 2011
+   :LOCATION: Leeds, United Kingdom
+   :END:
+
+** B.Tech. Automotive Design Engineering
+   :PROPERTIES:
+   :INSTITUTION: UPES, India
+   :PERIOD: Aug 2006 - Jun 2010
+   :LOCATION: Dehradun, India
+   :END:

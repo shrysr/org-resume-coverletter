@@ -1,0 +1,99 @@
+name: Build Resume and Cover Letter
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Emacs
+      uses: purcell/setup-emacs@master
+      with:
+        version: 29.1
+        
+    - name: Install TeXLive
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-full
+        
+    - name: Install org-mode and dependencies
+      run: |
+        emacs --batch --eval "(require 'package)" \
+              --eval "(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\") t)" \
+              --eval "(package-initialize)" \
+              --eval "(package-refresh-contents)" \
+              --eval "(package-install 'org)" \
+              --eval "(package-install 'ox-latex)"
+              
+    - name: Create output directory
+      run: mkdir -p dist
+      
+    - name: Export resume to PDF
+      run: |
+        emacs --batch resume.org \
+              --eval "(require 'ox-latex)" \
+              --eval "(setq org-latex-pdf-process '(\"pdflatex -interaction nonstopmode -output-directory %o %f\" \"pdflatex -interaction nonstopmode -output-directory %o %f\"))" \
+              --eval "(org-latex-export-to-pdf)" \
+              --eval "(copy-file \"resume.pdf\" \"dist/ShreyasRagavan-Resume.pdf\" t)"
+              
+    - name: Export resume to HTML
+      run: |
+        emacs --batch resume.org \
+              --eval "(require 'ox-html)" \
+              --eval "(setq org-html-head-include-default-style nil)" \
+              --eval "(setq org-html-head \"<style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;}h1{color:#1f4e79;border-bottom:2px solid #1f4e79;}h2{color:#333333;margin-top:1.5em;}ul{margin-left:20px;}a{color:#1f4e79;text-decoration:none;}a:hover{text-decoration:underline;}.title{text-align:center;margin-bottom:2em;}</style>\")" \
+              --eval "(org-html-export-to-html)" \
+              --eval "(copy-file \"resume.html\" \"dist/ShreyasRagavan-Resume.html\" t)"
+              
+    - name: Export cover letter to PDF
+      run: |
+        emacs --batch cover-letter.org \
+              --eval "(require 'ox-latex)" \
+              --eval "(setq org-latex-pdf-process '(\"pdflatex -interaction nonstopmode -output-directory %o %f\" \"pdflatex -interaction nonstopmode -output-directory %o %f\"))" \
+              --eval "(org-latex-export-to-pdf)" \
+              --eval "(copy-file \"cover-letter.pdf\" \"dist/ShreyasRagavan-CoverLetter.pdf\" t)"
+              
+    - name: Export cover letter to HTML
+      run: |
+        emacs --batch cover-letter.org \
+              --eval "(require 'ox-html)" \
+              --eval "(setq org-html-head-include-default-style nil)" \
+              --eval "(setq org-html-head \"<style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;padding:40px;line-height:1.8;}h1{color:#1f4e79;text-align:center;margin-bottom:2em;}p{margin-bottom:1em;text-align:justify;}a{color:#1f4e79;text-decoration:none;}a:hover{text-decoration:underline;}.contact-info{text-align:center;margin-bottom:2em;color:#666666;}</style>\")" \
+              --eval "(org-html-export-to-html)" \
+              --eval "(copy-file \"cover-letter.html\" \"dist/ShreyasRagavan-CoverLetter.html\" t)"
+              
+    - name: Upload PDF artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdfs
+        path: |
+          dist/*.pdf
+          dist/*.html
+        retention-days: 90
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        
+    - name: Create release
+      if: github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ github.run_number }}
+        name: Resume Build ${{ github.run_number }}
+        files: |
+          dist/ShreyasRagavan-Resume.pdf
+          dist/ShreyasRagavan-CoverLetter.pdf
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

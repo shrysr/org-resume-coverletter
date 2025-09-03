@@ -1,0 +1,78 @@
+#+TITLE: Cover Letter
+#+AUTHOR: Shreyas Ragavan
+#+EMAIL: shreyas@fastmail.com
+#+PHONE: +1 647-671-1851 / 279-258-9720
+#+LINKEDIN: https://linkedin.com/in/shreyasragavan
+#+WEBSITE: https://shreyas.ragavan.co
+#+GITHUB: https://github.com/shrysr
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt,a4paper]
+#+OPTIONS: toc:nil num:nil date:nil title:nil
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{fontawesome5}
+#+LATEX_HEADER: \usepackage{array}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \definecolor{primary}{RGB}{31, 78, 121}
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{102, 102, 102}
+#+LATEX_HEADER: \definecolor{accent}{RGB}{51, 51, 51}
+#+LATEX_HEADER: \definecolor{light}{RGB}{128, 128, 128}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \setlength{\parskip}{12pt}
+#+LATEX_HEADER: \pagestyle{empty}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
+
+# Configuration variables - customize these for each application
+#+COMPANY: [COMPANY NAME]
+#+POSITION: [POSITION TITLE]
+#+HIRING_MANAGER: [HIRING MANAGER NAME]
+#+SPECIFIC_REQUIREMENTS: [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]
+#+DATE: \today
+#+BEGIN_EXPORT latex
+\begin{center}
+{\Huge\bfseries\color{primary}Shreyas Ragavan}\\[0.4cm]
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\textcolor{accent}{\faEnvelope} \href{mailto:shreyas@fastmail.com}{shreyas@fastmail.com} &
+\textcolor{accent}{\faPhone} +1 647-671-1851 / 279-258-9720 &
+\textcolor{accent}{\faLinkedin} \href{https://linkedin.com/in/shreyasragavan}{\textcolor{primary}{LinkedIn}} \\
+\textcolor{accent}{\faGlobe} \href{https://shreyas.ragavan.co}{\textcolor{primary}{Website}} &
+\textcolor{accent}{\faGithub} \href{https://github.com/shrysr}{\textcolor{primary}{GitHub}} & \\
+\end{tabular*}
+\end{center}
+\vspace{1cm}
+
+\raggedleft
+\today\\[1cm]
+\raggedright
+#+END_EXPORT
+
+#+BEGIN_EXPORT latex
+{\large\bfseries\color{accent}Dear [HIRING MANAGER NAME],}\\[0.5cm]
+#+END_EXPORT
+
+I am writing to express my strong interest in the [POSITION TITLE] position at [COMPANY NAME]. With over 8 years of experience spanning data engineering, machine learning operations, and analytics, I am excited about the opportunity to contribute to your team's innovative work in [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING].
+
+In my current role as Senior Analyst MLOps at Definity Financial, I have developed and deployed statistical models, LLM applications, and rule-based systems on RStudio and Google Cloud, significantly enhancing business workflows and productivity. This experience has given me deep expertise in the full ML lifecycle, from model development to production deployment and monitoring. I have successfully managed project lifecycles while balancing technical debt and stakeholder expectations, skills that would be directly applicable to the challenges at [COMPANY NAME].
+
+My technical background aligns well with your requirements. I have extensive experience with:
+- *Cloud Platforms & MLOps:* Google Cloud Platform, Vertex AI, Cloud Build, Docker, and CI/CD pipelines
+- *Data Engineering:* BigQuery, Cloud Composer (Airflow), data modeling, and scalable data architectures
+- *Programming & Analytics:* Python, SQL, R, with proven ability to analyze large-scale datasets (25+ GB)
+- *Machine Learning:* End-to-end ML model development, deployment, and governance across various domains
+
+What sets me apart is my ability to bridge technical implementation with business strategy. At ReachStack, I proposed and developed a marketing analytics dashboard with 30+ interactive KPI charts, reducing report turnaround time by over 50%. This project required not just technical skills, but the ability to collaborate with Marketing and Sales teams to understand their needs and deliver actionable insights.
+
+I am particularly drawn to [COMPANY NAME] because of [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]. My experience in establishing MLOps best practices and optimizing legacy processes while managing cross-functional teams would enable me to make immediate contributions to your organization's goals.
+
+I would welcome the opportunity to discuss how my background in machine learning engineering, data architecture, and project leadership can contribute to [COMPANY NAME]'s continued success. Thank you for considering my application.
+
+#+BEGIN_EXPORT latex
+\vspace{0.5cm}
+{\color{accent}Sincerely,}\\[2cm]
+{\bfseries Shreyas Ragavan}
+#+END_EXPORT
