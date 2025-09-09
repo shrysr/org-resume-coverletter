@@ -13,11 +13,11 @@
 #+LATEX_HEADER: \usepackage{array}
 #+LATEX_HEADER: \usepackage{tabularx}
 #+LATEX_HEADER: \usepackage{calc}
-#+LATEX_HEADER: \definecolor{primary}{RGB}{70, 130, 180}
-#+LATEX_HEADER: \definecolor{secondary}{RGB}{102, 102, 102}
-#+LATEX_HEADER: \definecolor{accent}{RGB}{47, 79, 79}
-#+LATEX_HEADER: \definecolor{light}{RGB}{128, 128, 128}
-#+LATEX_HEADER: \definecolor{highlight}{RGB}{0, 85, 128}
+#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}
+#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}
+#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}
+#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}
 #+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
 #+LATEX_HEADER: \setlength{\parindent}{0pt}
 #+LATEX_HEADER: \setlength{\parskip}{0.05cm}
@@ -27,7 +27,7 @@
 #+LATEX_HEADER: \fancyfoot[C]{\small\color{secondary}\thepage}
 #+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
 #+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
-#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{}[\textcolor{primary}{\rule{\linewidth}{0.3pt}}\vspace{0.1cm}]
+#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}\MakeUppercase}{}{0em}{}[\vspace{\sectionlineoffset}\textcolor{primary}{\rule{\linewidth}{0.8pt}}\vspace{0.02cm}]
 #+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
 #+LATEX_HEADER: \titlespacing*{\section}{0pt}{\sectiontopspacing}{\sectionbottomspacing}  
 #+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{0.2cm}{0.05cm}
@@ -49,11 +49,12 @@
 
 #+LATEX_HEADER: \newcommand{\namesubtitlespacing}{0.1cm}
 #+LATEX_HEADER: \newcommand{\subtitlecontactspacing}{0.2cm}
-#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.5cm}}
+#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.4cm}}
 #+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}
 #+LATEX_HEADER: \newcommand{\sectiontopspacing}{0.2cm}
 #+LATEX_HEADER: \newcommand{\sectionbottomspacing}{0.02cm}
-#+LATEX_HEADER: \newcommand{\headername}{{\LARGE\bfseries\color{primary}\resumename}}
+#+LATEX_HEADER: \newcommand{\sectionlineoffset}{-0.28cm}
+#+LATEX_HEADER: \newcommand{\headername}{{\huge\bfseries\color{primary}\resumename}}
 #+LATEX_HEADER: \newcommand{\headersubtitle}{{\normalsize\color{secondary}\resumesubtitle}}
 #+LATEX_HEADER: \newcommand{\headeremail}{\textcolor{accent}{\faEnvelope} \href{mailto:\resumeemail}{\resumeemail}}
 #+LATEX_HEADER: \newcommand{\headerphone}{\textcolor{accent}{\faPhone} \resumephone}
@@ -69,29 +70,29 @@
 # Resume formatting configuration - easily editable  
 #+LATEX_HEADER: \newcommand{\resumeheadlinesep}{\textbar}
 #+LATEX_HEADER: \newcommand{\resumeperiodcolor}{light}
-#+LATEX_HEADER: \newcommand{\resumeperiodweight}{\textbf}
+#+LATEX_HEADER: \newcommand{\resumeperiodweight}{\small\textbf}
 #+LATEX_HEADER: \newcommand{\resumecompanycolor}{secondary}
-#+LATEX_HEADER: \newcommand{\resumebullet}{\textcolor{primary}{\scalebox{0.6}{\tiny$\blacksquare$}}}
+#+LATEX_HEADER: \newcommand{\resumebullet}{\textcolor{primary}{\raisebox{0.2ex}{\scalebox{0.8}{$\bullet$}}}}
 
-# Font size configuration - Compact for one-page fit
-#+LATEX_HEADER: \newcommand{\resumesectionsize}{\large}
-#+LATEX_HEADER: \newcommand{\resumepositionsize}{\normalsize}
-#+LATEX_HEADER: \newcommand{\resumedescriptionsize}{\small}
-#+LATEX_HEADER: \newcommand{\resumecompactsize}{\footnotesize}
+# Font size configuration - Enhanced visual hierarchy
+#+LATEX_HEADER: \newcommand{\resumesectionsize}{\Large}
+#+LATEX_HEADER: \newcommand{\resumepositionsize}{\large}
+#+LATEX_HEADER: \newcommand{\resumedescriptionsize}{\normalsize}
+#+LATEX_HEADER: \newcommand{\resumecompactsize}{\small}
 #+LATEX_HEADER: \newcommand{\resumedescriptioncolor}{secondary}
 #+LATEX_HEADER: \newcommand{\resumehighlightcolor}{highlight}
 
-# HTML configuration - Enhanced Corporate Elegance styling
+# HTML configuration - Enhanced Corporate Elegance styling (matches LaTeX colors)
 #+HTML_NAME_SIZE: 2.2em
 #+HTML_SECTION_SIZE: 1.6em
 #+HTML_POSITION_SIZE: 1.3em
 #+HTML_DESCRIPTION_SIZE: 1.0em
 #+HTML_COMPACT_SIZE: 0.9em
-#+HTML_PRIMARY_COLOR: #4682B4
-#+HTML_COMPANY_COLOR: #666666
-#+HTML_PERIOD_COLOR: #2F4F4F
-#+HTML_DESCRIPTION_COLOR: #666666
-#+HTML_HIGHLIGHT_COLOR: #005580
+#+HTML_PRIMARY_COLOR: #256395
+#+HTML_COMPANY_COLOR: #595959
+#+HTML_PERIOD_COLOR: #34495E
+#+HTML_DESCRIPTION_COLOR: #595959
+#+HTML_HIGHLIGHT_COLOR: #16A085
 
 #+BEGIN_SRC emacs-lisp :exports results :results none :eval export
 (defun resume-get-latex-command-value (command-name)
@@ -140,13 +141,21 @@
                  (title (org-element-interpret-data (org-element-property :title headline)))
                  (company (org-element-property :COMPANY headline))
                  (institution (org-element-property :INSTITUTION headline))  
-                 (period (org-element-property :PERIOD headline)))
+                 (period (org-element-property :PERIOD headline))
+                 (location (org-element-property :LOCATION headline)))
             (when (= level 2)
               (let ((org-name (or company institution))
                     (clean-title (string-trim title)))
                 (when (and org-name period)
-                  (let ((formatted-title (format "%s \\\\textbar\\\\ \\\\textcolor{\\\\resumecompanycolor}{%s} \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}"
-                                                 clean-title org-name period)))
+                  (let ((formatted-title 
+                         (if institution
+                             ;; Education format: degree name on first line, institution + location on second line
+                             (format "%s \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}\\\\\\\\[0.1cm]{\\\\resumecompactsize\\\\textcolor{\\\\resumecompanycolor}{%s%s}}"
+                                     clean-title period institution 
+                                     (if location (format " | %s" location) ""))
+                             ;; Experience format: original single line format
+                             (format "%s \\\\textbar\\\\ \\\\textcolor{\\\\resumecompanycolor}{%s} \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}"
+                                     clean-title org-name period))))
                     (setq text (replace-regexp-in-string 
                                 (format "\\\\subsection\\*{%s}" (regexp-quote clean-title))
                                 (format "\\\\subsection*{%s}" formatted-title)
@@ -160,7 +169,7 @@
       
       ;; Add header and enhanced dynamic styles for HTML using configurable properties
       (unless (string-match "<div class=\"header\">" text)
-        (let ((dynamic-styles (format "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">\n<style>\nbody { font-family: 'Segoe UI', 'Calibri', Arial, sans-serif; line-height: 1.4; color: #333; }\nh1 { font-size: %s !important; color: %s !important; font-weight: bold; margin-bottom: 0.3em; }\nh2 { font-size: %s !important; color: %s !important; border-bottom: 1px solid %s; padding-bottom: 0.2em; margin-top: 1.2em; margin-bottom: 0.6em; }\n.position { font-size: %s !important; display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.6em; margin-bottom: 0.2em; font-weight: 600; }\n.position .title-company { flex: 1; }\n.position .period { margin-left: auto; font-weight: bold; }\nul { margin-top: 0.3em; margin-bottom: 0.8em; }\nul li { font-size: %s !important; color: %s !important; margin-bottom: 0.1em; line-height: 1.3; }\n.header { text-align: center; margin-bottom: 1.5em; padding: 1em; border-bottom: 2px solid %s; }\n.contact-info { font-size: %s !important; color: %s; margin-top: 0.5em; }\n.contact-info i { margin-right: 0.4em; color: %s; }\n.contact-info a { color: %s; text-decoration: none; }\n.contact-info a:hover { text-decoration: underline; }\n</style>" 
+        (let ((dynamic-styles (format "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\">\n<style>\nbody { font-family: 'Segoe UI', 'Calibri', Arial, sans-serif; line-height: 1.4; color: #333; }\nh1 { font-size: %s !important; color: %s !important; font-weight: bold; margin-bottom: 0.3em; }\nh2 { font-size: %s !important; color: %s !important; text-transform: uppercase; border-bottom: 2px solid %s; padding-bottom: 0.2em; margin-top: 1.2em; margin-bottom: 0.6em; }\n.position { font-size: %s !important; margin-top: 0.6em; margin-bottom: 0.2em; font-weight: 600; }\n.position .exp-left { display: inline-block; }\n.position .exp-period { float: right; display: inline-block; }\n.position .edu-title { display: inline-block; }\n.position .edu-period { float: right; display: inline-block; }\n.position .edu-institution { clear: both; display: block; font-weight: normal; }\n.position::after { content: \"\"; display: table; clear: both; }\nul { margin-top: 0.3em; margin-bottom: 0.8em; }\nul li { font-size: %s !important; color: %s !important; margin-bottom: 0.1em; line-height: 1.3; }\n.header { text-align: center; margin-bottom: 1.5em; padding: 1em; border-bottom: 2px solid %s; }\n.contact-info { font-size: %s !important; color: %s; margin-top: 0.5em; }\n.contact-info i { margin-right: 0.4em; color: %s; }\n.contact-info a { color: %s; text-decoration: none; }\n.contact-info a:hover { text-decoration: underline; }\n</style>" 
                                       html-name-size html-primary-color
                                       html-section-size html-primary-color html-primary-color
                                       html-position-size
@@ -187,24 +196,29 @@
                               "</div>")
                       text))))
       
-      ;; Format experience headlines for HTML using config
+      ;; Format experience and education headlines for HTML using config
       (org-element-map (plist-get info :parse-tree) 'headline
         (lambda (headline)
           (let* ((level (org-element-property :level headline))
                  (title (org-element-interpret-data (org-element-property :title headline)))
                  (company (org-element-property :COMPANY headline))
                  (institution (org-element-property :INSTITUTION headline))  
-                 (period (org-element-property :PERIOD headline)))
+                 (period (org-element-property :PERIOD headline))
+                 (location (org-element-property :LOCATION headline)))
             (when (= level 2)
               (let ((org-name (or company institution))
                     (clean-title (string-trim title)))
                 (when (and org-name period)
-                  (let ((html-title (format "<span class=\"title-company\">%s | <span class=\"company\" style=\"color: %s;\">%s</span></span><span class=\"period\" style=\"color: %s; font-weight: bold;\">%s</span>"
-                                           clean-title 
-                                           html-company-color
-                                           org-name 
-                                           html-period-color
-                                           period)))
+                  (let ((html-title 
+                         (if institution
+                             ;; Education format: Title → Period (right aligned, small+bold), then Institution | Location (smaller, below)
+                             (format "<div class=\"edu-title\">%s</div><div class=\"edu-period\" style=\"color: %s; font-size: %s; font-weight: bold;\">%s</div><div class=\"edu-institution\" style=\"color: %s; font-size: %s; margin-top: 0.1em;\">%s%s</div>"
+                                     clean-title html-period-color html-compact-size period
+                                     html-company-color html-compact-size institution
+                                     (if location (format " | %s" location) ""))
+                             ;; Experience format: Title | Company → Period (right aligned, small+bold)
+                             (format "<div class=\"exp-left\">%s | <span class=\"company\" style=\"color: %s;\">%s</span></div><div class=\"exp-period\" style=\"color: %s; font-size: %s; font-weight: bold;\">%s</div>"
+                                     clean-title html-company-color org-name html-period-color html-compact-size period))))
                     (setq text (replace-regexp-in-string 
                                 (format "<h3[^>]*>%s</h3>" (regexp-quote clean-title))
                                 (format "<h3 class=\"position\" style=\"font-size: %s;\">%s</h3>" 
@@ -217,14 +231,14 @@
 
 * EXPERIENCE
 
-** Sr. MLOps Engineer 
+** Sr. Machine Learning Operations Engineer 
    :PROPERTIES:
    :COMPANY: Definity Financial
    :PERIOD: June, 2022 - Present
    :LOCATION: Vancouver, Canada
    :END:
 
-- Developed and deployed statistical models, LLM applications, and rule-based systems on RStudio and Google Cloud, significantly enhancing business workflows and productivity at call centers and fraud detection.
+- Developed and deployed statistical models, *LLM* applications, and rule-based systems on RStudio and Google Cloud, significantly enhancing business workflows and productivity at call centers and fraud detection.
 - Managed project lifecycles and on-time delivery, balancing technical debt and stakeholder expectations, while mentoring junior team members
 - Key contributor to improving operational efficiency and system reliability by establishing MLOps best practices and optimizing legacy processes
 
@@ -291,14 +305,14 @@
 
 ** MSc. Advanced Mechanical Engineering
    :PROPERTIES:
-   :INSTITUTION: University of Leeds, UK
+   :INSTITUTION: University of Leeds
    :PERIOD: Sep 2010 - Nov 2011
    :LOCATION: Leeds, United Kingdom
    :END:
 
 ** B.Tech. Automotive Design Engineering
    :PROPERTIES:
-   :INSTITUTION: UPES, India
+   :INSTITUTION: University of Petroleum \\& Energy Studies
    :PERIOD: Aug 2006 - Jun 2010
    :LOCATION: Dehradun, India
    :END:
