@@ -38,9 +38,9 @@ jobs:
         # Install only the packages we actually need
         tlmgr install \
           geometry xcolor titlesec enumitem fontawesome5 \
-          array tabularx calc fancyhdr lmodern \
-          amsmath amssymb hyperref wrapfig rotating \
-          ulem capt-of graphics tools latex-bin \
+          tools amsfonts fancyhdr lm \
+          amsmath hyperref graphics wrapfig rotating \
+          ulem capt-of latex-bin \
           latex epstopdf-pkg etoolbox
           
     - name: Cache Emacs packages
