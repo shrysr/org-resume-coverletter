@@ -1,0 +1,96 @@
+name: Build Resume (Docker Optimized)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Build with Docker
+      run: |
+        # Create a custom Dockerfile for our specific needs
+        cat > Dockerfile << 'EOF'
+        FROM texlive/texlive:latest-small
+        
+        # Install only the packages we need
+        RUN tlmgr install \
+          geometry xcolor titlesec enumitem fontawesome5 \
+          array tabularx calc fancyhdr lmodern \
+          amsmath amssymb hyperref
+        
+        # Install emacs
+        RUN apt-get update && apt-get install -y emacs-nox && rm -rf /var/lib/apt/lists/*
+        
+        WORKDIR /workspace
+        EOF
+        
+        # Build the image
+        docker build -t resume-builder .
+        
+    - name: Export documents with Docker
+      run: |
+        # Create output directory
+        mkdir -p dist
+        
+        # Run the export in Docker
+        docker run --rm \
+          -v ${{ github.workspace }}:/workspace \
+          resume-builder bash -c '
+          # Export resume
+          emacs --batch resume.org \
+                --eval "(require '\''ox-latex)" \
+                --eval "(setq org-confirm-babel-evaluate nil)" \
+                --eval "(setq org-latex-pdf-process '\''(\"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\" \"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\"))" \
+                --eval "(org-latex-export-to-pdf)" \
+                --eval "(org-html-export-to-html)"
+          
+          # Export cover letter  
+          emacs --batch cover-letter.org \
+                --eval "(require '\''ox-latex)" \
+                --eval "(setq org-confirm-babel-evaluate nil)" \
+                --eval "(setq org-latex-pdf-process '\''(\"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\" \"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\"))" \
+                --eval "(org-latex-export-to-pdf)" \
+                --eval "(org-html-export-to-html)"
+          
+          # Copy to dist
+          cp resume.pdf dist/ShreyasRagavan-Resume.pdf
+          cp resume.html dist/ShreyasRagavan-Resume.html
+          cp cover-letter.pdf dist/ShreyasRagavan-CoverLetter.pdf
+          cp cover-letter.html dist/ShreyasRagavan-CoverLetter.html
+        '
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-documents
+        path: |
+          dist/*.pdf
+          dist/*.html
+        retention-days: 90
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        
+    - name: Create release
+      if: github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ github.run_number }}
+        name: Resume Build ${{ github.run_number }}
+        files: |
+          dist/ShreyasRagavan-Resume.pdf
+          dist/ShreyasRagavan-CoverLetter.pdf
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

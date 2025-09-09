@@ -1,4 +1,4 @@
-name: Build Resume (TinyTeX Optimized)
+name: Build Resume and Cover Letter
 
 on:
   push:
@@ -18,39 +18,26 @@ jobs:
       with:
         version: 29.1
         
-    - name: Cache TinyTeX and packages
+    - name: Cache TeXLive packages
       uses: actions/cache@v4
       with:
         path: |
-          ~/.TinyTeX
-          ~/bin
-        key: ${{ runner.os }}-tinytex-${{ hashFiles('**/resume.org', '**/cover-letter.org') }}
+          /usr/local/texlive
+          ~/.texlive
+        key: ${{ runner.os }}-texlive-${{ hashFiles('**/resume.org', '**/cover-letter.org') }}
         restore-keys: |
-          ${{ runner.os }}-tinytex-
+          ${{ runner.os }}-texlive-
           
-    - name: Install TinyTeX
+    - name: Install TeXLive (minimal + required packages)
       run: |
-        # Install TinyTeX (much smaller than full TeXLive)
-        wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
-        echo "$HOME/bin" >> $GITHUB_PATH
-        export PATH="$HOME/bin:$PATH"
+        sudo apt-get update
+        # Install minimal texlive
+        sudo apt-get install -y texlive-base texlive-latex-recommended
+        # Install specific packages we need
+        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended
+        # Install fontawesome and additional packages
+        sudo apt-get install -y texlive-fonts-extra
         
-        # Install only the packages we actually need
-        tlmgr install \
-          geometry xcolor titlesec enumitem fontawesome5 \
-          array tabularx calc fancyhdr lmodern \
-          amsmath amssymb hyperref wrapfig rotating \
-          ulem capt-of graphics tools latex-bin \
-          latex epstopdf-pkg etoolbox
-          
-    - name: Cache Emacs packages
-      uses: actions/cache@v4
-      with:
-        path: ~/.emacs.d/elpa
-        key: ${{ runner.os }}-emacs-${{ hashFiles('**/resume.org') }}
-        restore-keys: |
-          ${{ runner.os }}-emacs-
-          
     - name: Install org-mode and dependencies
       run: |
         emacs --batch --eval "(require 'package)" \
@@ -64,36 +51,46 @@ jobs:
     - name: Create output directory
       run: mkdir -p dist
       
-    - name: Export documents
+    - name: Export resume to PDF
       run: |
-        export PATH="$HOME/bin:$PATH"
-        
-        # Export resume
         emacs --batch resume.org \
               --eval "(require 'ox-latex)" \
               --eval "(setq org-confirm-babel-evaluate nil)" \
               --eval "(setq org-latex-pdf-process '(\"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\" \"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\"))" \
               --eval "(org-latex-export-to-pdf)" \
-              --eval "(org-html-export-to-html)"
+              --eval "(copy-file \"resume.pdf\" \"dist/ShreyasRagavan-Resume.pdf\" t)"
               
-        # Export cover letter
+    - name: Export resume to HTML
+      run: |
+        emacs --batch resume.org \
+              --eval "(require 'ox-html)" \
+              --eval "(setq org-confirm-babel-evaluate nil)" \
+              --eval "(setq org-html-head-include-default-style nil)" \
+              --eval "(org-html-export-to-html)" \
+              --eval "(copy-file \"resume.html\" \"dist/ShreyasRagavan-Resume.html\" t)"
+              
+    - name: Export cover letter to PDF
+      run: |
         emacs --batch cover-letter.org \
               --eval "(require 'ox-latex)" \
               --eval "(setq org-confirm-babel-evaluate nil)" \
               --eval "(setq org-latex-pdf-process '(\"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\" \"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f\"))" \
               --eval "(org-latex-export-to-pdf)" \
-              --eval "(org-html-export-to-html)"
+              --eval "(copy-file \"cover-letter.pdf\" \"dist/ShreyasRagavan-CoverLetter.pdf\" t)"
               
-        # Copy to dist directory
-        cp resume.pdf dist/ShreyasRagavan-Resume.pdf
-        cp resume.html dist/ShreyasRagavan-Resume.html
-        cp cover-letter.pdf dist/ShreyasRagavan-CoverLetter.pdf
-        cp cover-letter.html dist/ShreyasRagavan-CoverLetter.html
-        
-    - name: Upload artifacts
+    - name: Export cover letter to HTML
+      run: |
+        emacs --batch cover-letter.org \
+              --eval "(require 'ox-html)" \
+              --eval "(setq org-confirm-babel-evaluate nil)" \
+              --eval "(setq org-html-head-include-default-style nil)" \
+              --eval "(org-html-export-to-html)" \
+              --eval "(copy-file \"cover-letter.html\" \"dist/ShreyasRagavan-CoverLetter.html\" t)"
+              
+    - name: Upload PDF artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: resume-documents
+        name: resume-pdfs
         path: |
           dist/*.pdf
           dist/*.html
