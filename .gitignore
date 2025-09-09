@@ -1,0 +1,42 @@
+# LaTeX intermediate files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+*.brf
+*.lof
+*.lot
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.gls
+*.fls
+*.figlist
+*.makefile
+*.fdb_latexmk
+
+# Org-mode exports (except final PDFs we want to keep)
+*.tex
+*.html
+
+# Test outputs
+test-output/
+
+# macOS
+.DS_Store
+
+# Emacs backup files
+*~
+.#*
+#*#
