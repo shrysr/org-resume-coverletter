@@ -1,11 +1,11 @@
 #+STARTUP: showeverything
 #+LATEX_CLASS: article
 
-#+LATEX_CLASS_OPTIONS: [11pt,a4paper]
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper]
 #+OPTIONS: toc:nil num:nil date:nil title:nil author:nil prop:nil
 #+HTML_HEAD: <style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333;}h1{color:#1f4e79;border-bottom:2px solid #1f4e79;text-align:center;}h2{color:#1f4e79;border-bottom:1px solid #1f4e79;}h3{color:#333;margin-top:1em;}ul{margin-left:20px;}li{margin-bottom:5px;}a{color:#1f4e79;text-decoration:none;}a:hover{text-decoration:underline;}.header{text-align:center;margin-bottom:2em;padding:20px;}.contact-info{color:#666;margin-top:10px;}.job-entry{border-left:3px solid #1f4e79;padding-left:15px;margin-bottom:20px;}</style>
 #+LATEX_COMPILER: pdflatex
-#+LATEX_HEADER: \usepackage[margin=0.60in]{geometry}
+#+LATEX_HEADER: \usepackage[margin=0.50in]{geometry}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{titlesec}
 #+LATEX_HEADER: \usepackage{enumitem}
@@ -29,7 +29,7 @@
 #+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
 #+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{}[\textcolor{primary}{\rule{\linewidth}{0.3pt}}\vspace{0.1cm}]
 #+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
-#+LATEX_HEADER: \titlespacing*{\section}{0pt}{0.4cm}{0.15cm}  
+#+LATEX_HEADER: \titlespacing*{\section}{0pt}{\sectiontopspacing}{\sectionbottomspacing}  
 #+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{0.2cm}{0.05cm}
 #+LATEX_HEADER: \setlist[itemize]{leftmargin=0.8em,itemsep=0.01cm,parsep=0pt,topsep=0.02cm,label=\resumebullet,font=\resumedescriptionsize\color{\resumedescriptioncolor}}
 #+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
@@ -49,7 +49,10 @@
 
 #+LATEX_HEADER: \newcommand{\namesubtitlespacing}{0.1cm}
 #+LATEX_HEADER: \newcommand{\subtitlecontactspacing}{0.2cm}
-#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.1cm}}
+#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.5cm}}
+#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}
+#+LATEX_HEADER: \newcommand{\sectiontopspacing}{0.2cm}
+#+LATEX_HEADER: \newcommand{\sectionbottomspacing}{0.02cm}
 #+LATEX_HEADER: \newcommand{\headername}{{\LARGE\bfseries\color{primary}\resumename}}
 #+LATEX_HEADER: \newcommand{\headersubtitle}{{\normalsize\color{secondary}\resumesubtitle}}
 #+LATEX_HEADER: \newcommand{\headeremail}{\textcolor{accent}{\faEnvelope} \href{mailto:\resumeemail}{\resumeemail}}
@@ -59,7 +62,7 @@
 #+LATEX_HEADER: \newcommand{\headergithub}{\textcolor{accent}{\faGithub} \href{\resumegithub}{\textcolor{primary}{Github}}}
 
 # Assembling the header 
-#+LATEX_HEADER: \AtBeginDocument{\begin{center}\headername\def\tempsubtitle{\resumesubtitle}\ifx\tempsubtitle\empty\else\\[\namesubtitlespacing]\headersubtitle\fi\\[\subtitlecontactspacing]{\small\headeremail $|$ \headerphone $|$ \headerlinkedin $|$ \headerwebsite $|$ \headergithub}\end{center}\headerspacing}
+#+LATEX_HEADER: \AtBeginDocument{\begin{center}\headername\vspace{\subtitlecontactspacing}\\{\small\headeremail \headercontactspacing$|$\headercontactspacing \headerphone \headercontactspacing$|$\headercontactspacing \headerlinkedin \headercontactspacing$|$\headercontactspacing \headerwebsite \headercontactspacing$|$\headercontactspacing \headergithub}\end{center}\headerspacing}
 
 #+OPTIONS: prop:t
 
@@ -212,7 +215,7 @@
 (add-to-list 'org-export-filter-final-output-functions 'resume-export-filter)
 #+END_SRC
 
-* Experience
+* EXPERIENCE
 
 ** Sr. MLOps Engineer 
    :PROPERTIES:
@@ -276,7 +279,7 @@
 - Proposed & engineered a 75% reduction in runtime and 100% software license utilization improvement through a bespoke, python driven solution
 - Developed automated model runs & reports, saving 30 minutes of analysis time, and 4+ hours of large data transfer per design iteration
 
-* Skills
+* SKILLS
 
 - *Programming:* Python, SQL, R, Java, Bash
 - *Cloud & DevOps:* GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
@@ -284,7 +287,7 @@
 - *ML & AI:* Vertex AI, LLM, Machine Learning, AI Engineering
 - *Tools & Platforms:* Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
 
-* Education
+* EDUCATION
 
 ** MSc. Advanced Mechanical Engineering
    :PROPERTIES:
