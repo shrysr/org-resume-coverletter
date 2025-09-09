@@ -39,9 +39,13 @@ jobs:
         tlmgr install \
           geometry xcolor titlesec enumitem fontawesome5 \
           tools amsfonts fancyhdr lm \
-          amsmath hyperref graphics wrapfig rotating \
+          amsmath hyperref graphics wrapfig \
           ulem capt-of latex-bin \
           latex epstopdf-pkg etoolbox
+          
+        # Enable automatic package installation for missing packages
+        tlmgr option autobackup 0
+        echo 'main_memory=5000000' >> ~/.TinyTeX/texmf.cnf
           
     - name: Cache Emacs packages
       uses: actions/cache@v4
@@ -67,6 +71,9 @@ jobs:
     - name: Export documents
       run: |
         export PATH="$HOME/bin:$PATH"
+        
+        # Set TinyTeX to install missing packages automatically
+        export TINYTEX_INSTALL_MISSING=1
         
         # Export resume
         emacs --batch resume.org \
