@@ -27,7 +27,7 @@
 #+LATEX_HEADER: \fancyfoot[C]{\small\color{secondary}\thepage}
 #+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
 #+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
-#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}\MakeUppercase}{}{0em}{}[\vspace{\sectionlineoffset}\textcolor{primary}{\rule{\linewidth}{0.8pt}}\vspace{0.02cm}]
+#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{\MakeUppercase}[\vspace{\sectionlineoffset}\textcolor{primary}{\rule{\linewidth}{0.8pt}}\vspace{0.02cm}]
 #+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
 #+LATEX_HEADER: \titlespacing*{\section}{0pt}{\sectiontopspacing}{\sectionbottomspacing}  
 #+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{0.2cm}{0.05cm}
