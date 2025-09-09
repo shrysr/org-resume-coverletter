@@ -1,10 +1,5 @@
+#+STARTUP: showeverything
 #+TITLE: Cover Letter
-#+AUTHOR: Shreyas Ragavan
-#+EMAIL: shreyas@fastmail.com
-#+PHONE: +1 647-671-1851 / 279-258-9720
-#+LINKEDIN: https://linkedin.com/in/shreyasragavan
-#+WEBSITE: https://shreyas.ragavan.co
-#+GITHUB: https://github.com/shrysr
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [11pt,a4paper]
 #+OPTIONS: toc:nil num:nil date:nil title:nil
@@ -16,15 +11,33 @@
 #+LATEX_HEADER: \usepackage{fontawesome5}
 #+LATEX_HEADER: \usepackage{array}
 #+LATEX_HEADER: \usepackage{tabularx}
-#+LATEX_HEADER: \definecolor{primary}{RGB}{31, 78, 121}
-#+LATEX_HEADER: \definecolor{secondary}{RGB}{102, 102, 102}
-#+LATEX_HEADER: \definecolor{accent}{RGB}{51, 51, 51}
-#+LATEX_HEADER: \definecolor{light}{RGB}{128, 128, 128}
+#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}
+#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}
+#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}
+#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}
 #+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
 #+LATEX_HEADER: \setlength{\parindent}{0pt}
 #+LATEX_HEADER: \setlength{\parskip}{12pt}
 #+LATEX_HEADER: \pagestyle{empty}
 #+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
+
+# Personal information configuration - matches resume.org
+#+LATEX_HEADER: \newcommand{\coverlettername}{Shreyas Ragavan}
+#+LATEX_HEADER: \newcommand{\coverletteremails}{shreyas@fastmail.com}
+#+LATEX_HEADER: \newcommand{\coverletterphone}{+1 279-258-9720}
+#+LATEX_HEADER: \newcommand{\coverletterlinkedin}{https://linkedin.com/in/shreyasragavan}
+#+LATEX_HEADER: \newcommand{\coverletterwebsite}{https://shreyas.ragavan.co}
+#+LATEX_HEADER: \newcommand{\coverlettergithub}{https://github.com/shrysr}
+
+# Cover letter spacing configuration
+#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}
+
+# Cover letter content variables - customize for each application
+#+LATEX_HEADER: \newcommand{\hiringmanagername}{[HIRING MANAGER NAME]}
+#+LATEX_HEADER: \newcommand{\companyname}{[COMPANY NAME]}
+#+LATEX_HEADER: \newcommand{\positiontitle}{[POSITION TITLE]}
+#+LATEX_HEADER: \newcommand{\specificrequirements}{[SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]}
 
 # Configuration variables - customize these for each application
 #+COMPANY: [COMPANY NAME]
@@ -32,17 +45,12 @@
 #+HIRING_MANAGER: [HIRING MANAGER NAME]
 #+SPECIFIC_REQUIREMENTS: [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]
 #+DATE: \today
+
 #+BEGIN_EXPORT latex
 \begin{center}
-{\Huge\bfseries\color{primary}Shreyas Ragavan}\\[0.4cm]
+{\huge\bfseries\color{primary}\coverlettername}\\[0.4cm]
 
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
-\textcolor{accent}{\faEnvelope} \href{mailto:shreyas@fastmail.com}{shreyas@fastmail.com} &
-\textcolor{accent}{\faPhone} +1 647-671-1851 / 279-258-9720 &
-\textcolor{accent}{\faLinkedin} \href{https://linkedin.com/in/shreyasragavan}{\textcolor{primary}{LinkedIn}} \\
-\textcolor{accent}{\faGlobe} \href{https://shreyas.ragavan.co}{\textcolor{primary}{Website}} &
-\textcolor{accent}{\faGithub} \href{https://github.com/shrysr}{\textcolor{primary}{GitHub}} & \\
-\end{tabular*}
+{\small\textcolor{accent}{\faEnvelope} \href{mailto:\coverletteremails}{\coverletteremails} \headercontactspacing$|$\headercontactspacing \textcolor{accent}{\faPhone} \coverletterphone \headercontactspacing$|$\headercontactspacing \textcolor{accent}{\faLinkedin} \href{\coverletterlinkedin}{\textcolor{primary}{LinkedIn}} \headercontactspacing$|$\headercontactspacing \textcolor{accent}{\faGlobe} \href{\coverletterwebsite}{\textcolor{primary}{Website}} \headercontactspacing$|$\headercontactspacing \textcolor{accent}{\faGithub} \href{\coverlettergithub}{\textcolor{primary}{GitHub}}}
 \end{center}
 \vspace{1cm}
 
@@ -52,7 +60,7 @@
 #+END_EXPORT
 
 #+BEGIN_EXPORT latex
-{\large\bfseries\color{accent}Dear [HIRING MANAGER NAME],}\\[0.5cm]
+{\large\bfseries\color{accent}Dear \hiringmanagername,}\\[0.5cm]
 #+END_EXPORT
 
 I am writing to express my strong interest in the [POSITION TITLE] position at [COMPANY NAME]. With over 8 years of experience spanning data engineering, machine learning operations, and analytics, I am excited about the opportunity to contribute to your team's innovative work in [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING].
@@ -73,6 +81,6 @@ I would welcome the opportunity to discuss how my background in machine learning
 
 #+BEGIN_EXPORT latex
 \vspace{0.5cm}
-{\color{accent}Sincerely,}\\[2cm]
+{\color{accent}Sincerely,}\\[0.1cm]
 {\bfseries Shreyas Ragavan}
 #+END_EXPORT
