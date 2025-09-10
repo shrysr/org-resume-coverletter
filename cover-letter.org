@@ -3,48 +3,85 @@
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [11pt,a4paper]
 #+OPTIONS: toc:nil num:nil date:nil title:nil
-#+LATEX_HEADER: \usepackage[utf8]{inputenc}
-#+LATEX_HEADER: \usepackage[T1]{fontenc}
-#+LATEX_HEADER: \usepackage{lmodern}
-#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \usepackage{fontawesome5}
-#+LATEX_HEADER: \usepackage{array}
-#+LATEX_HEADER: \usepackage{tabularx}
-#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}
-#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}
-#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}
-#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}
-#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}
-#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
-#+LATEX_HEADER: \setlength{\parindent}{0pt}
-#+LATEX_HEADER: \setlength{\parskip}{12pt}
-#+LATEX_HEADER: \pagestyle{empty}
+
+# =============================================================================
+# PACKAGE IMPORTS
+# =============================================================================
+# Core packages required for cover letter functionality
+
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}               % UTF-8 input encoding
+#+LATEX_HEADER: \usepackage[T1]{fontenc}                  % T1 font encoding for better character support
+#+LATEX_HEADER: \usepackage{lmodern}                      % Latin Modern fonts (cleaner than Computer Modern)
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}         % Page margins (1 inch all sides - standard business letter)
+#+LATEX_HEADER: \usepackage{xcolor}                       % Color support for text and backgrounds
+#+LATEX_HEADER: \usepackage{fontawesome5}                 % FontAwesome icons for contact info
+#+LATEX_HEADER: \usepackage{array}                        % Enhanced table/array formatting
+#+LATEX_HEADER: \usepackage{tabularx}                     % Flexible table layouts
+
+# =============================================================================
+# COLOR PALETTE - MATCHES RESUME THEME
+# =============================================================================
+# Professional color scheme matching resume.org for consistency
+
+#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}    % Professional blue for headers and links
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}   % Dark gray for regular text
+#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}      % Darker blue-gray for emphasis
+#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}    % Light gray for secondary info
+#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}  % Teal accent for special highlights
+
+# =============================================================================
+# DOCUMENT LAYOUT SETTINGS
+# =============================================================================
+# Basic document formatting and page setup
+
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}  % Use sans-serif font family (modern, clean)
+#+LATEX_HEADER: \setlength{\parindent}{0pt}               % Remove paragraph indentation
+#+LATEX_HEADER: \setlength{\parskip}{12pt}                % Standard business letter paragraph spacing
+#+LATEX_HEADER: \pagestyle{empty}                         % No headers or footers (clean business letter look)
+
+# Hyperlink formatting (matches resume theme)
 #+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
 
-# Personal information configuration - matches resume.org
-#+LATEX_HEADER: \newcommand{\coverlettername}{Shreyas Ragavan}
-#+LATEX_HEADER: \newcommand{\coverletteremails}{shreyas@fastmail.com}
-#+LATEX_HEADER: \newcommand{\coverletterphone}{+1 279-258-9720}
-#+LATEX_HEADER: \newcommand{\coverletterlinkedin}{https://linkedin.com/in/shreyasragavan}
-#+LATEX_HEADER: \newcommand{\coverletterwebsite}{https://shreyas.ragavan.co}
-#+LATEX_HEADER: \newcommand{\coverlettergithub}{https://github.com/shrysr}
+# =============================================================================
+# PERSONAL INFORMATION - MATCHES RESUME.ORG
+# =============================================================================
+# These values should match the corresponding values in resume.org for consistency
 
-# Cover letter spacing configuration
-#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}
+#+LATEX_HEADER: \newcommand{\coverlettername}{Shreyas Ragavan}                         % Your full name
+#+LATEX_HEADER: \newcommand{\coverletteremails}{shreyas@fastmail.com}                  % Email address
+#+LATEX_HEADER: \newcommand{\coverletterphone}{+1 279-258-9720}                       % Phone number
+#+LATEX_HEADER: \newcommand{\coverletterlinkedin}{https://linkedin.com/in/shreyasragavan}  % LinkedIn profile URL
+#+LATEX_HEADER: \newcommand{\coverletterwebsite}{https://shreyas.ragavan.co}           % Personal website URL
+#+LATEX_HEADER: \newcommand{\coverlettergithub}{https://github.com/shrysr}             % GitHub profile URL
 
-# Cover letter content variables - customize for each application
-#+LATEX_HEADER: \newcommand{\hiringmanagername}{[HIRING MANAGER NAME]}
-#+LATEX_HEADER: \newcommand{\companyname}{[COMPANY NAME]}
-#+LATEX_HEADER: \newcommand{\positiontitle}{[POSITION TITLE]}
-#+LATEX_HEADER: \newcommand{\specificrequirements}{[SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]}
+# =============================================================================
+# SPACING CONFIGURATION
+# =============================================================================
+# Adjust spacing between header elements
 
-# Configuration variables - customize these for each application
-#+COMPANY: [COMPANY NAME]
-#+POSITION: [POSITION TITLE]
-#+HIRING_MANAGER: [HIRING MANAGER NAME]
-#+SPECIFIC_REQUIREMENTS: [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]
-#+DATE: \today
+#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}  % Space between contact items (email | phone | etc.)
+
+# =============================================================================
+# COVER LETTER CONTENT VARIABLES - CUSTOMIZE FOR EACH APPLICATION
+# =============================================================================
+# Replace these placeholders with actual values for each job application
+
+#+LATEX_HEADER: \newcommand{\hiringmanagername}{[HIRING MANAGER NAME]}           % Name of hiring manager or "Hiring Manager"
+#+LATEX_HEADER: \newcommand{\companyname}{[COMPANY NAME]}                       % Target company name
+#+LATEX_HEADER: \newcommand{\positiontitle}{[POSITION TITLE]}                   % Position you're applying for
+#+LATEX_HEADER: \newcommand{\specificrequirements}{[SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]}  % Key requirements from job posting
+
+# =============================================================================
+# ORG-MODE PROPERTIES - ALTERNATIVE CONFIGURATION METHOD
+# =============================================================================
+# These org properties can be used as an alternative to LaTeX commands above
+# Currently used for reference and future enhancements
+
+#+COMPANY: [COMPANY NAME]                                    % Target company name
+#+POSITION: [POSITION TITLE]                                % Position title
+#+HIRING_MANAGER: [HIRING MANAGER NAME]                     % Hiring manager name
+#+SPECIFIC_REQUIREMENTS: [SPECIFIC SKILLS/REQUIREMENTS FROM JOB POSTING]  % Key requirements
+#+DATE: \today                                              % Current date (LaTeX command)
 
 #+BEGIN_EXPORT latex
 \begin{center}

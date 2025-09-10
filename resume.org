@@ -1,122 +1,242 @@
 #+STARTUP: showeverything
 #+LATEX_CLASS: article
-
 #+LATEX_CLASS_OPTIONS: [10pt,a4paper]
+
 #+OPTIONS: toc:nil num:nil date:nil title:nil author:nil prop:nil
+
 #+HTML_HEAD: <style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333;}h1{color:#1f4e79;border-bottom:2px solid #1f4e79;text-align:center;}h2{color:#1f4e79;border-bottom:1px solid #1f4e79;}h3{color:#333;margin-top:1em;}ul{margin-left:20px;}li{margin-bottom:5px;}a{color:#1f4e79;text-decoration:none;}a:hover{text-decoration:underline;}.header{text-align:center;margin-bottom:2em;padding:20px;}.contact-info{color:#666;margin-top:10px;}.job-entry{border-left:3px solid #1f4e79;padding-left:15px;margin-bottom:20px;}</style>
+
 #+LATEX_COMPILER: pdflatex
-#+LATEX_HEADER: \usepackage[margin=0.50in]{geometry}
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \usepackage{titlesec}
-#+LATEX_HEADER: \usepackage{enumitem}
-#+LATEX_HEADER: \usepackage{fontawesome5}
-#+LATEX_HEADER: \usepackage{array}
-#+LATEX_HEADER: \usepackage{tabularx}
-#+LATEX_HEADER: \usepackage{calc}
-#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}
-#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}
-#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}
-#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}
-#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}
-#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
-#+LATEX_HEADER: \setlength{\parindent}{0pt}
-#+LATEX_HEADER: \setlength{\parskip}{0.05cm}
-#+LATEX_HEADER: \usepackage{fancyhdr}
-#+LATEX_HEADER: \pagestyle{fancy}
-#+LATEX_HEADER: \fancyhf{}
-#+LATEX_HEADER: \fancyfoot[C]{\small\color{secondary}\thepage}
-#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
-#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
-#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{\MakeUppercase}[\vspace{\sectionlineoffset}\textcolor{primary}{\rule{\linewidth}{0.8pt}}\vspace{0.02cm}]
-#+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
-#+LATEX_HEADER: \titlespacing*{\section}{0pt}{\sectiontopspacing}{\sectionbottomspacing}  
-#+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{0.2cm}{0.05cm}
-#+LATEX_HEADER: \setlist[itemize]{leftmargin=0.8em,itemsep=0.01cm,parsep=0pt,topsep=0.02cm,label=\resumebullet,font=\resumedescriptionsize\color{\resumedescriptioncolor}}
+
+# =============================================================================
+# PACKAGE IMPORTS
+# =============================================================================
+# Core packages required for resume functionality
+
+#+LATEX_HEADER: \usepackage[margin=0.50in]{geometry}      % Page margins (0.5 inch all sides)
+#+LATEX_HEADER: \usepackage{xcolor}                       % Color support for text and backgrounds
+#+LATEX_HEADER: \usepackage{titlesec}                     % Custom section/subsection formatting
+#+LATEX_HEADER: \usepackage{enumitem}                     % Enhanced list formatting (bullets, spacing)
+#+LATEX_HEADER: \usepackage{fontawesome5}                 % FontAwesome icons for contact info
+#+LATEX_HEADER: \usepackage{array}                        % Enhanced table/array formatting
+#+LATEX_HEADER: \usepackage{tabularx}                     % Flexible table layouts
+#+LATEX_HEADER: \usepackage{calc}                         % Mathematical calculations in lengths
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}               % UTF-8 input encoding
+#+LATEX_HEADER: \usepackage[T1]{fontenc}                  % T1 font encoding for better character support
+#+LATEX_HEADER: \usepackage{lmodern}                      % Latin Modern fonts (cleaner than Computer Modern)
+#+LATEX_HEADER: \usepackage{fancyhdr}                     % Custom header/footer formatting
+
+# =============================================================================
+# COLOR PALETTE - Professional Resume Theme
+# =============================================================================
+# Professional color scheme optimized for readability and ATS compatibility
+
+#+LATEX_HEADER: \definecolor{primary}{RGB}{37, 99, 149}    % Professional blue for headers and links
+#+LATEX_HEADER: \definecolor{secondary}{RGB}{89, 89, 89}   % Dark gray for regular text and company names
+#+LATEX_HEADER: \definecolor{accent}{RGB}{52, 73, 94}      % Darker blue-gray for job titles and icons
+#+LATEX_HEADER: \definecolor{light}{RGB}{127, 140, 141}    % Light gray for dates and secondary info
+#+LATEX_HEADER: \definecolor{highlight}{RGB}{22, 160, 133}  % Teal accent for special highlights (minimal use)
+
+# =============================================================================
+# DOCUMENT LAYOUT SETTINGS
+# =============================================================================
+# Basic document formatting and page setup
+
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}  % Use sans-serif font family (modern, clean)
+#+LATEX_HEADER: \setlength{\parindent}{0pt}               % Remove paragraph indentation
+#+LATEX_HEADER: \setlength{\parskip}{0.05cm}              % Minimal space between paragraphs
+
+# Header and footer setup (page numbers only)
+#+LATEX_HEADER: \pagestyle{fancy}                         % Enable custom header/footer
+#+LATEX_HEADER: \fancyhf{}                                % Clear all header/footer content
+#+LATEX_HEADER: \fancyfoot[C]{\small\color{secondary}\thepage}  % Centered page number in footer
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}        % Remove header line
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}        % Remove footer line
+
+# Hyperlink formatting
 #+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary,filecolor=primary}
-#+LATEX_HEADER: \usepackage[utf8]{inputenc}
-#+LATEX_HEADER: \usepackage[T1]{fontenc}
-#+LATEX_HEADER: \usepackage{lmodern}
 
-# Modify the following as required for the resume header for PDF
-#+LATEX_HEADER: \newcommand{\resumename}{Shreyas Ragavan}
-#+LATEX_HEADER: \newcommand{\resumesubtitle}{}
-#+LATEX_HEADER: \newcommand{\resumeemail}{shreyas@fastmail.com}
-#+LATEX_HEADER: \newcommand{\resumephone}{+1 279-258-9720 }
-#+LATEX_HEADER: \newcommand{\resumelinkedin}{https://linkedin.com/in/shreyasragavan}
-#+LATEX_HEADER: \newcommand{\resumewebsite}{https://shreyas.ragavan.co}
-#+LATEX_HEADER: \newcommand{\resumegithub}{https://github.com/shrysr}
+# =============================================================================
+# SECTION AND SUBSECTION FORMATTING
+# =============================================================================
+# Custom formatting for main sections (EXPERIENCE, SKILLS, EDUCATION) and job/education entries
+
+# Main section headers (EXPERIENCE, SKILLS, EDUCATION)
+# Format: Large, bold, primary color, uppercase, with underline
+#+LATEX_HEADER: \titleformat{\section}{\resumesectionsize\bfseries\color{primary}}{}{0em}{\MakeUppercase}[\vspace{\sectionlineoffset}\textcolor{primary}{\rule{\linewidth}{0.8pt}}\vspace{0.02cm}]
+
+# Job titles and education degrees (subsections)
+# Format: Large, bold, accent color, with right-aligned content
+#+LATEX_HEADER: \titleformat{\subsection}[runin]{\resumepositionsize\bfseries\color{accent}}{}{0em}{}[ \hfill ]
+
+# Spacing around sections and subsections (see spacing variables below for values)
+#+LATEX_HEADER: \titlespacing*{\section}{0pt}{\sectiontopspacing}{\sectionbottomspacing}
+#+LATEX_HEADER: \titlespacing*{\subsection}{0pt}{\subsectiontopspacing}{\subsectionbottomspacing}
+
+# =============================================================================
+# BULLET POINT FORMATTING
+# =============================================================================
+# Custom bullet points and list spacing for job descriptions
+
+#+LATEX_HEADER: \setlist[itemize]{leftmargin=0.8em,itemsep=0.01cm,parsep=0pt,topsep=0.02cm,label=\resumebullet,font=\resumedescriptionsize\color{\resumedescriptioncolor}}
+
+# =============================================================================
+# PERSONAL INFORMATION - EDIT THESE VALUES
+# =============================================================================
+# Modify these values to customize the resume header information
+
+#+LATEX_HEADER: \newcommand{\resumename}{Shreyas Ragavan}                         % Your full name
+#+LATEX_HEADER: \newcommand{\resumesubtitle}{}                                   % Optional subtitle/tagline (leave empty if not needed)
+#+LATEX_HEADER: \newcommand{\resumeemail}{shreyas@fastmail.com}                  % Email address
+#+LATEX_HEADER: \newcommand{\resumephone}{+1 279-258-9720 }                     % Phone number
+#+LATEX_HEADER: \newcommand{\resumelinkedin}{https://linkedin.com/in/shreyasragavan}  % LinkedIn profile URL
+#+LATEX_HEADER: \newcommand{\resumewebsite}{https://shreyas.ragavan.co}          % Personal website URL
+#+LATEX_HEADER: \newcommand{\resumegithub}{https://github.com/shrysr}            % GitHub profile URL
 
 
-#+LATEX_HEADER: \newcommand{\namesubtitlespacing}{0.1cm}
-#+LATEX_HEADER: \newcommand{\subtitlecontactspacing}{0.2cm}
-#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.4cm}}
-#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}
-#+LATEX_HEADER: \newcommand{\sectiontopspacing}{0.2cm}
-#+LATEX_HEADER: \newcommand{\sectionbottomspacing}{0.02cm}
-#+LATEX_HEADER: \newcommand{\sectionlineoffset}{-0.28cm}
-#+LATEX_HEADER: \newcommand{\headername}{{\huge\bfseries\color{primary}\resumename}}
-#+LATEX_HEADER: \newcommand{\headersubtitle}{{\normalsize\color{secondary}\resumesubtitle}}
-#+LATEX_HEADER: \newcommand{\headeremail}{\textcolor{accent}{\faEnvelope} \href{mailto:\resumeemail}{\resumeemail}}
-#+LATEX_HEADER: \newcommand{\headerphone}{\textcolor{accent}{\faPhone} \resumephone}
-#+LATEX_HEADER: \newcommand{\headerlinkedin}{\textcolor{accent}{\faLinkedin} \href{\resumelinkedin}{\textcolor{primary}{LinkedIn}}}
-#+LATEX_HEADER: \newcommand{\headerwebsite}{\textcolor{accent}{\faGlobe} \href{\resumewebsite}{\textcolor{primary}{Website}}}
-#+LATEX_HEADER: \newcommand{\headergithub}{\textcolor{accent}{\faGithub} \href{\resumegithub}{\textcolor{primary}{Github}}}
+# =============================================================================
+# SPACING CONFIGURATION - FINE-TUNE LAYOUT
+# =============================================================================
+# Adjust these values to control spacing throughout the resume
+# Smaller values = tighter spacing, Larger values = more space
 
-# Assembling the header 
+# Header section spacing
+#+LATEX_HEADER: \newcommand{\namesubtitlespacing}{0.1cm}      % Space between name and subtitle
+#+LATEX_HEADER: \newcommand{\subtitlecontactspacing}{0.2cm}   % Space between subtitle and contact info
+#+LATEX_HEADER: \newcommand{\headerspacing}{\vspace{-0.4cm}}  % Space after header (negative = move content up)
+#+LATEX_HEADER: \newcommand{\headercontactspacing}{\enspace}  % Space between contact items (email | phone | etc.)
+
+# Section spacing (EXPERIENCE, SKILLS, EDUCATION headers)
+#+LATEX_HEADER: \newcommand{\sectiontopspacing}{0.2cm}        % Space before section headers
+#+LATEX_HEADER: \newcommand{\sectionbottomspacing}{0.02cm}    % Space after section headers (before content)
+#+LATEX_HEADER: \newcommand{\sectionlineoffset}{-0.28cm}      % Position adjustment for section underlines
+
+# Subsection spacing (job titles, education degrees)
+#+LATEX_HEADER: \newcommand{\subsectiontopspacing}{0.15cm}    % Space before job titles/education entries
+#+LATEX_HEADER: \newcommand{\subsectionbottomspacing}{0.04cm} % Space after job titles/education entries
+
+# =============================================================================
+# HEADER COMPONENTS - AUTOMATIC ASSEMBLY
+# =============================================================================
+# These commands automatically format the resume header using the personal info above
+# No need to modify unless changing header layout
+
+# Individual header elements with styling
+#+LATEX_HEADER: \newcommand{\headername}{{\huge\bfseries\color{primary}\resumename}}          % Large, bold name in primary color
+#+LATEX_HEADER: \newcommand{\headersubtitle}{{\normalsize\color{secondary}\resumesubtitle}}    % Optional subtitle in secondary color
+#+LATEX_HEADER: \newcommand{\headeremail}{\textcolor{accent}{\faEnvelope} \href{mailto:\resumeemail}{\resumeemail}}        % Email with envelope icon
+#+LATEX_HEADER: \newcommand{\headerphone}{\textcolor{accent}{\faPhone} \resumephone}                                   % Phone with phone icon
+#+LATEX_HEADER: \newcommand{\headerlinkedin}{\textcolor{accent}{\faLinkedin} \href{\resumelinkedin}{\textcolor{primary}{LinkedIn}}}  % LinkedIn with icon
+#+LATEX_HEADER: \newcommand{\headerwebsite}{\textcolor{accent}{\faGlobe} \href{\resumewebsite}{\textcolor{primary}{Website}}}      % Website with globe icon
+#+LATEX_HEADER: \newcommand{\headergithub}{\textcolor{accent}{\faGithub} \href{\resumegithub}{\textcolor{primary}{Github}}}        % GitHub with icon
+
+# Complete header assembly - automatically creates centered header with contact info
+# Format: Name on top line, contact info on second line separated by | symbols
 #+LATEX_HEADER: \AtBeginDocument{\begin{center}\headername\vspace{\subtitlecontactspacing}\\{\small\headeremail \headercontactspacing$|$\headercontactspacing \headerphone \headercontactspacing$|$\headercontactspacing \headerlinkedin \headercontactspacing$|$\headercontactspacing \headerwebsite \headercontactspacing$|$\headercontactspacing \headergithub}\end{center}\headerspacing}
 
 #+OPTIONS: prop:t
 
-# Resume formatting configuration - easily editable  
-#+LATEX_HEADER: \newcommand{\resumeheadlinesep}{\textbar}
-#+LATEX_HEADER: \newcommand{\resumeperiodcolor}{light}
-#+LATEX_HEADER: \newcommand{\resumeperiodweight}{\small\textbf}
-#+LATEX_HEADER: \newcommand{\resumecompanycolor}{secondary}
-#+LATEX_HEADER: \newcommand{\resumebullet}{\textcolor{primary}{\raisebox{0.2ex}{\scalebox{0.8}{$\bullet$}}}}
+# =============================================================================
+# TYPOGRAPHY AND VISUAL ELEMENTS
+# =============================================================================
+# Font sizes and visual elements for different resume components
 
-# Font size configuration - Enhanced visual hierarchy
-#+LATEX_HEADER: \newcommand{\resumesectionsize}{\Large}
-#+LATEX_HEADER: \newcommand{\resumepositionsize}{\large}
-#+LATEX_HEADER: \newcommand{\resumedescriptionsize}{\normalsize}
-#+LATEX_HEADER: \newcommand{\resumecompactsize}{\small}
-#+LATEX_HEADER: \newcommand{\resumedescriptioncolor}{secondary}
-#+LATEX_HEADER: \newcommand{\resumehighlightcolor}{highlight}
+# Font size hierarchy (creates clear visual structure)
+#+LATEX_HEADER: \newcommand{\resumesectionsize}{\Large}        % Main section headers (EXPERIENCE, SKILLS, etc.)
+#+LATEX_HEADER: \newcommand{\resumepositionsize}{\large}       % Job titles and education degrees
+#+LATEX_HEADER: \newcommand{\resumedescriptionsize}{\normalsize} % Bullet point descriptions
+#+LATEX_HEADER: \newcommand{\resumecompactsize}{\small}        % Dates, locations, and compact text
 
-# HTML configuration - Enhanced Corporate Elegance styling (matches LaTeX colors)
-#+HTML_NAME_SIZE: 2.2em
-#+HTML_SECTION_SIZE: 1.6em
-#+HTML_POSITION_SIZE: 1.3em
-#+HTML_DESCRIPTION_SIZE: 1.0em
-#+HTML_COMPACT_SIZE: 0.9em
-#+HTML_PRIMARY_COLOR: #256395
-#+HTML_COMPANY_COLOR: #595959
-#+HTML_PERIOD_COLOR: #34495E
-#+HTML_DESCRIPTION_COLOR: #595959
-#+HTML_HIGHLIGHT_COLOR: #16A085
+# Content formatting elements
+#+LATEX_HEADER: \newcommand{\resumeheadlinesep}{\textbar}                                                    % Separator between title | company
+#+LATEX_HEADER: \newcommand{\resumeperiodcolor}{light}                                                      % Color for date ranges
+#+LATEX_HEADER: \newcommand{\resumeperiodweight}{\small\textbf}                                             % Font weight/size for dates
+#+LATEX_HEADER: \newcommand{\resumecompanycolor}{secondary}                                                  % Color for company/institution names
+#+LATEX_HEADER: \newcommand{\resumedescriptioncolor}{secondary}                                              % Color for bullet point text
+#+LATEX_HEADER: \newcommand{\resumehighlightcolor}{highlight}                                                % Color for special highlights
+#+LATEX_HEADER: \newcommand{\resumebullet}{\textcolor{primary}{\raisebox{0.2ex}{\scalebox{0.8}{$\bullet$}}}} % Custom bullet points (primary color, slightly raised)
+
+# =============================================================================
+# HTML STYLING CONFIGURATION  
+# =============================================================================
+# These properties control HTML export styling to match the LaTeX/PDF output
+# Values correspond to CSS font-size and color properties
+# Font sizes (em units scale with base font size)
+#+HTML_NAME_SIZE: 2.2em                    # Name in header (large and prominent)
+#+HTML_SECTION_SIZE: 1.6em                 # Section headers (EXPERIENCE, SKILLS, etc.)
+#+HTML_POSITION_SIZE: 1.3em                # Job titles and education degrees  
+#+HTML_DESCRIPTION_SIZE: 1.0em             # Bullet point descriptions (normal size)
+#+HTML_COMPACT_SIZE: 0.9em                 # Dates, small text (slightly smaller)
+
+# Color scheme (hex colors matching LaTeX theme)
+#+HTML_PRIMARY_COLOR: #256395              # Professional blue for headers and links
+#+HTML_COMPANY_COLOR: #595959              # Dark gray for company/institution names
+#+HTML_PERIOD_COLOR: #34495E               # Blue-gray for date ranges
+#+HTML_DESCRIPTION_COLOR: #595959          # Dark gray for bullet point text
+#+HTML_HIGHLIGHT_COLOR: #16A085            # Teal accent for links and highlights
+
+# =============================================================================
+# EXPORT FILTER - ADVANCED FORMATTING ENGINE
+# =============================================================================
+# This Emacs Lisp code automatically formats the resume during export:
+# - Removes property drawer blocks from final output
+# - Formats job titles with company names and dates
+# - Creates consistent HTML and LaTeX formatting
+# - Handles different formatting for Experience vs Education sections
+# 
+# How it works:
+# 1. Scans org-mode properties (COMPANY, INSTITUTION, PERIOD, LOCATION)
+# 2. Formats section headers with proper styling and colors
+# 3. Generates appropriate HTML/LaTeX output based on export backend
+# 4. Maintains ATS compatibility while ensuring visual consistency
 
 #+BEGIN_SRC emacs-lisp :exports results :results none :eval export
+;; =============================================================================
+;; UTILITY FUNCTIONS
+;; =============================================================================
+
 (defun resume-get-latex-command-value (command-name)
-  "Extract the value from a LaTeX newcommand definition in current buffer."
+  "Extract the value from a LaTeX \\newcommand definition in current buffer.
+   Example: \\newcommand{\\resumename}{John Doe} -> returns 'John Doe'"
   (save-excursion
     (goto-char (point-min))
     (when (re-search-forward (format "\\\\newcommand{\\\\%s}{\\([^}]*\\)}" command-name) nil t)
       (match-string 1))))
 
 (defun resume-get-file-property (property-name)
-  "Get a file-level property from the current org buffer."
+  "Get a file-level property from the current org buffer.
+   Example: #+HTML_PRIMARY_COLOR: #1f4e79 -> returns '#1f4e79'"
   (save-excursion
     (goto-char (point-min))
     (when (re-search-forward (format "^#\\+%s: \\(.*\\)$" (upcase property-name)) nil t)
       (match-string 1))))
 
+;; =============================================================================
+;; MAIN EXPORT FILTER FUNCTION
+;; =============================================================================
+
 (defun resume-export-filter (text backend info)
-  "Clean up property verbatim blocks and format headlines with company/period."
+  "Main export filter that processes resume content for both HTML and LaTeX output.
+   
+   This function:
+   1. Extracts personal information and styling configuration
+   2. Removes property drawer blocks that shouldn't appear in final output
+   3. Formats job titles with company names and dates
+   4. Creates appropriate styling for HTML vs LaTeX backends
+   5. Handles different formatting for Experience vs Education sections
+   
+   The function automatically detects the export backend (html/latex) and
+   applies the appropriate formatting while maintaining visual consistency."
+  
+  ;; Extract personal information from LaTeX commands
   (let ((name (or (resume-get-latex-command-value "resumename") "ERROR: resumename not defined"))
         (email (or (resume-get-latex-command-value "resumeemail") "ERROR: resumeemail not defined"))
         (phone (or (resume-get-latex-command-value "resumephone") "ERROR: resumephone not defined"))
         (linkedin (or (resume-get-latex-command-value "resumelinkedin") "ERROR: resumelinkedin not defined"))
         (website (or (resume-get-latex-command-value "resumewebsite") "ERROR: resumewebsite not defined"))
         (github (or (resume-get-latex-command-value "resumegithub") "ERROR: resumegithub not defined"))
+        
+        ;; Extract HTML styling configuration
         (html-name-size (or (resume-get-file-property "HTML_NAME_SIZE") "ERROR: HTML_NAME_SIZE not defined"))
         (html-section-size (or (resume-get-file-property "HTML_SECTION_SIZE") "ERROR: HTML_SECTION_SIZE not defined"))
         (html-position-size (or (resume-get-file-property "HTML_POSITION_SIZE") "ERROR: HTML_POSITION_SIZE not defined"))
@@ -134,6 +254,7 @@
                   "\\\\begin{verbatim}\n\\(COMPANY\\|INSTITUTION\\|PERIOD\\|LOCATION\\): \\([^\n]*\\)\n\\(\\([A-Z]+: [^\n]*\n\\)*\\)\\\\end{verbatim}"
                   "" text))
       
+      
       ;; Format headlines using configurable colors
       (org-element-map (plist-get info :parse-tree) 'headline
         (lambda (headline)
@@ -149,10 +270,9 @@
                 (when (and org-name period)
                   (let ((formatted-title 
                          (if institution
-                             ;; Education format: degree name on first line, institution + location on second line
-                             (format "%s \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}\\\\\\\\[0.1cm]{\\\\resumecompactsize\\\\textcolor{\\\\resumecompanycolor}{%s%s}}"
-                                     clean-title period institution 
-                                     (if location (format " | %s" location) ""))
+                             ;; Education format: degree name | institution on same line, period right-aligned  
+                             (format "%s \\\\textbar\\\\ {\\\\footnotesize\\\\textcolor{\\\\resumecompanycolor}{%s}} \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}"
+                                     clean-title institution period)
                              ;; Experience format: original single line format
                              (format "%s \\\\textbar\\\\ \\\\textcolor{\\\\resumecompanycolor}{%s} \\\\hfill \\\\textcolor{\\\\resumeperiodcolor}{\\\\resumeperiodweight{%s}}"
                                      clean-title org-name period))))
@@ -211,11 +331,10 @@
                 (when (and org-name period)
                   (let ((html-title 
                          (if institution
-                             ;; Education format: Title → Period (right aligned, small+bold), then Institution | Location (smaller, below)
-                             (format "<div class=\"edu-title\">%s</div><div class=\"edu-period\" style=\"color: %s; font-size: %s; font-weight: bold;\">%s</div><div class=\"edu-institution\" style=\"color: %s; font-size: %s; margin-top: 0.1em;\">%s%s</div>"
-                                     clean-title html-period-color html-compact-size period
-                                     html-company-color html-compact-size institution
-                                     (if location (format " | %s" location) ""))
+                             ;; Education format: Title | Institution on same line, Period right-aligned
+                             (format "<div class=\"exp-left\">%s | <span class=\"company\" style=\"color: %s; font-size: 0.8em;\">%s</span></div><div class=\"exp-period\" style=\"color: %s; font-size: %s; font-weight: bold;\">%s</div>"
+                                     clean-title html-company-color institution
+                                     html-period-color html-compact-size period)
                              ;; Experience format: Title | Company → Period (right aligned, small+bold)
                              (format "<div class=\"exp-left\">%s | <span class=\"company\" style=\"color: %s;\">%s</span></div><div class=\"exp-period\" style=\"color: %s; font-size: %s; font-weight: bold;\">%s</div>"
                                      clean-title html-company-color org-name html-period-color html-compact-size period))))
@@ -223,7 +342,7 @@
                                 (format "<h3[^>]*>%s</h3>" (regexp-quote clean-title))
                                 (format "<h3 class=\"position\" style=\"font-size: %s;\">%s</h3>" 
                                         html-position-size html-title)
-                                text)))))))))))
+                                text))))))))))))
     text))
 
 (add-to-list 'org-export-filter-final-output-functions 'resume-export-filter)
@@ -295,11 +414,20 @@
 
 * SKILLS
 
-- *Programming:* Python, SQL, R, Java, Bash
-- *Cloud & DevOps:* GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
-- *Data & Analytics:* BigQuery, Looker, Data Viz, Data Modeling, Cloud Composer (Airflow)
-- *ML & AI:* Vertex AI, LLM, Machine Learning, AI Engineering
-- *Tools & Platforms:* Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
+** Programming
+Python, SQL, R, Java, Bash
+
+** Cloud & DevOps
+GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
+
+** Data & Analytics
+BigQuery, Looker, Data Viz, Data Modeling, Cloud Composer (Airflow)
+
+** ML & AI
+Vertex AI, LLM, Machine Learning, AI Engineering
+
+** Tools & Platforms
+Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
 
 * EDUCATION
 

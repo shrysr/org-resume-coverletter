@@ -1,6 +1,6 @@
 # Org-Mode Resume System
 
-An automated resume and cover letter system using Emacs Org mode with LaTeX export and GitHub Actions CI/CD.
+An automated resume and cover letter system using Emacs Org mode with LaTeX export and GitHub Actions CI/CD. Features optimized GitHub Actions workflows, compact skills section formatting, and comprehensive spacing controls.
 
 ## 📁 Project Structure
 
@@ -22,8 +22,11 @@ An automated resume and cover letter system using Emacs Org mode with LaTeX expo
 - **Standard Export**: Works with standard org export commands (C-c C-e l p)
 - **Easy Customization**: Separate LATEX_HEADER lines for quick contact info editing
 - **Template System**: Cover letter with customizable placeholders
-- **Automated Builds**: GitHub Actions workflow triggers on push to main
+- **Automated Builds**: Optimized GitHub Actions workflow with TinyTeX (1-2 min builds)
 - **GitHub Pages**: Automatic deployment of HTML versions
+- **Compact Layout**: Skills organized as org headings, optimized education section spacing
+- **ATS Friendly**: Structured format optimized for Applicant Tracking Systems
+- **Configurable Spacing**: Easy-to-adjust spacing variables for fine-tuning layout
 
 ## 🎨 Color Scheme
 
