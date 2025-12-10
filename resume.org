@@ -348,6 +348,26 @@
 (add-to-list 'org-export-filter-final-output-functions 'resume-export-filter)
 #+END_SRC
 
+* Professional Summary
+
+
+* SKILLS
+
+** Programming
+Python, SQL, R, Java, Bash
+
+** Cloud & DevOps
+GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
+
+** Data & Analytics
+BigQuery, Looker, Data Viz, Data Modeling, Cloud Composer (Airflow)
+
+** ML & AI
+Vertex AI, LLM, Machine Learning, AI Engineering
+
+** Tools & Platforms
+Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
+
 * EXPERIENCE
 
 ** Sr. Machine Learning Operations Engineer 
@@ -411,23 +431,6 @@
 
 - Proposed & engineered a 75% reduction in runtime and 100% software license utilization improvement through a bespoke, python driven solution
 - Developed automated model runs & reports, saving 30 minutes of analysis time, and 4+ hours of large data transfer per design iteration
-
-* SKILLS
-
-** Programming
-Python, SQL, R, Java, Bash
-
-** Cloud & DevOps
-GCP, Docker, Cloud Build, Bitbucket pipelines, CI/CD
-
-** Data & Analytics
-BigQuery, Looker, Data Viz, Data Modeling, Cloud Composer (Airflow)
-
-** ML & AI
-Vertex AI, LLM, Machine Learning, AI Engineering
-
-** Tools & Platforms
-Collibra, Jira, Linux, Enterprise Resource Planning (ERP)
 
 * EDUCATION
 
