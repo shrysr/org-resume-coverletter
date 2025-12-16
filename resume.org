@@ -384,9 +384,9 @@
 
 - *Programming:* Python, SQL, R, Java, Bash, HTML
 - *Cloud & DevOps:* Google Cloud Platform, Docker, Cloud Build, Bitbucket pipelines, CI/CD, Cloud Composer (Airflow)
-- *Data & Analytics:* BigQuery, Looker, Data Viz, Data Modeling, 
-- *ML & AI:* Vertex AI, LLM, Machine Learning, AI Engineering
-- *Tools & Platforms:* Collibra, Jira, Linux, Enterprise Resource Planning (ERP), HumanFirst
+- *Data & Analytics:* Collibra, BigQuery, Looker, Data Viz, Data Modeling
+- *ML & AI:* Vertex AI, LLM, Custom model deployment
+- *Tools & Platforms:* Jira, Linux, Enterprise Resource Planning (ERP), HumanFirst
 
 * EXPERIENCE
 
