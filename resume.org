@@ -381,13 +381,14 @@
 (add-to-list 'org-export-filter-final-output-functions 'resume-export-filter)
 #+END_SRC
 
+* Summary :noexport:
+Hello World
 * SKILLS
 
-- *Programming:* Python, SQL, R, Java, Bash, HTML
-- *Cloud & DevOps:* Google Cloud Platform, Docker, Cloud Build, Bitbucket pipelines, CI/CD, Cloud Composer (Airflow)
-- *Data & Analytics:* Collibra, BigQuery, Looker, Data Viz, Data Modeling
-- *ML & AI:* Vertex AI, LLM, Custom model deployment
-- *Tools & Platforms:* Jira, Linux, Enterprise Resource Planning (ERP), HumanFirst
+- *Machine Learning & AI:* Python, PyTorch, Generative AI, Large Language Models (LLMs), XGBoost
+- *MLOps & Infrastructure:* Kubernetes (KFP), Docker, Vertex AI, CI/CD, Airflow, Model Deployment
+- *Cloud & Data:* Google Cloud Platform (GCP), BigQuery, DuckDB, FastAPI, Data Modeling, Data Governance (Collibra)
+- *Core Technologies:* Git, SQL, Bash, Linux, R, Java
 
 * EXPERIENCE
 
@@ -397,7 +398,7 @@
    :PERIOD: Jun 2022 - Present
    :LOCATION: Vancouver, Canada
    :END:
-- Led multiple analytical products, from an MLOps perspective especially focused on Call Center AI applications, like agent assistance, call summarisation, topic modelling. 
+- Led the planning, development and maintenance of multiple analytical products from an MLOps perspective especially focused on Call Center AI applications, like agent assistance, call summarisation, topic modelling. 
 - Developed and deployed statistical models, Generative AI *LLM API's, like call summarisation and  and rule-based systems on RStudio and Google Cloud, significantly enhancing business workflows and productivity at call centers and fraud detection.
 - Managed project lifecycles and on-time delivery, balancing technical debt and stakeholder expectations, while mentoring junior team members
 - Key contributor to improving operational efficiency and system reliability by establishing MLOps best practices and optimizing legacy processes
@@ -440,10 +441,10 @@
    :LOCATION: Mumbai Area, India
    :END:
 
-- Managed end-to-end techno-commercial lifecycle of critical application products from sales to maintenance, coordinating with global stakeholders
 - Developed and negotiated proposals, cost estimations, and pricing strategies, ensuring clear purchase terms with diverse clients
+- Managed end-to-end techno-commercial lifecycle of critical application products from sales to maintenance, coordinating with global stakeholders
 
-** Sr Executive Engineer
+** Research Engineer
    :PROPERTIES:
    :COMPANY: Wilo SE
    :PERIOD: Apr 2012 - Aug 2015
