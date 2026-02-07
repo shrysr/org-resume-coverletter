@@ -1,8 +1,11 @@
+#+STARTUP: overview indent
 * Document setup :noexport:
+:PROPERTIES:
+:ID:       4CBFCE71-0BE5-4B1B-9772-EDB8F49D503D
+:END:
 # ==============================================================================
 # DOCUMENT SETUP
 # ==============================================================================
-#+STARTUP: showeverything
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [10pt,a4paper]
 #+OPTIONS: toc:nil num:nil date:nil title:nil author:nil prop:nil
@@ -133,12 +136,12 @@
 #+LATEX_HEADER: \newcommand{\resumename}{Shreyas Ragavan}
 #+LATEX_HEADER: \newcommand{\resumesubtitle}{}
 #+LATEX_HEADER: \newcommand{\resumeemail}{shreyas@fastmail.com}
-#+LATEX_HEADER: \newcommand{\resumephone}{+1 279-258-9720 }
+#+LATEX_HEADER: \newcommand{\resumephone}{+1 647-671-1851 }
 #+LATEX_HEADER: \newcommand{\resumelinkedin}{https://linkedin.com/in/shreyasragavan}
 #+LATEX_HEADER: \newcommand{\resumewebsite}{https://shreyas.ragavan.co}
 #+LATEX_HEADER: \newcommand{\resumegithub}{https://github.com/shrysr}
-#+LATEX_HEADER: \newcommand{\resumelocation}{SF, USA}
-#+LATEX_HEADER: \newcommand{\resumevisatext}{No Visa Sponsorship Required}
+#+LATEX_HEADER: \def\resumelocation{}
+#+LATEX_HEADER: \newcommand{\resumevisatext}{}
 
 # ==============================================================================
 # SPACING CONFIGURATION
@@ -178,7 +181,7 @@
 #+LATEX_HEADER: \newcommand{\headerlinkedin}{\textcolor{accent}{\faLinkedin} \href{\resumelinkedin}{\textcolor{primary}{LinkedIn}}}
 #+LATEX_HEADER: \newcommand{\headerwebsite}{\textcolor{accent}{\faGlobe} \href{\resumewebsite}{\textcolor{primary}{Website}}}
 #+LATEX_HEADER: \newcommand{\headergithub}{\textcolor{accent}{\faGithub} \href{\resumegithub}{\textcolor{primary}{Github}}}
-#+LATEX_HEADER: \newcommand{\headerlocation}{\textcolor{accent}{\faMapMarker*} \resumelocation}
+#+LATEX_HEADER: \newcommand{\headerlocation}{\ifx\resumelocation\empty\else\textcolor{accent}{\faMapMarker*} \resumelocation\fi}
 
 # ==============================================================================
 # CORNER BADGE CONFIGURATION
@@ -201,7 +204,7 @@
 #+LATEX_HEADER: }
 
 # Final header assembly: Combines name and contact info with proper spacing
-#+LATEX_HEADER: \AtBeginDocument{\visabanner\begin{center}\headername\vspace{\subtitlecontactspacing}\\{\small\headeremail \headercontactspacing$|$\headercontactspacing \headerphone \headercontactspacing$|$\headercontactspacing \headerlinkedin \headercontactspacing$|$\headercontactspacing \headerwebsite \headercontactspacing$|$\headercontactspacing \headergithub \headercontactspacing$|$\headercontactspacing \headerlocation}\end{center}\headerspacing}
+#+LATEX_HEADER: \AtBeginDocument{\visabanner\begin{center}\headername\vspace{\subtitlecontactspacing}\\{\small\headeremail \headercontactspacing$|$\headercontactspacing \headerphone \headercontactspacing$|$\headercontactspacing \headerlinkedin \headercontactspacing$|$\headercontactspacing \headerwebsite \headercontactspacing$|$\headercontactspacing \headergithub\ifx\resumelocation\empty\else \headercontactspacing$|$\headercontactspacing \headerlocation\fi}\end{center}\headerspacing}
 
 #+OPTIONS: prop:t
 
