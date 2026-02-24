@@ -29,6 +29,8 @@
 # Org-mode exports (except final PDFs we want to keep)
 *.tex
 *.html
+# But track the custom RenderCV HTML template
+!src/html/
 
 # Test outputs
 test-output/
@@ -40,3 +42,16 @@ test-output/
 *~
 .#*
 #*#
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.python-version
+
+# RenderCV generated output
+src/rendercv_output/
+
+# CI output directory
+dist/
