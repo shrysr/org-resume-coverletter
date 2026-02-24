@@ -88,7 +88,7 @@ cv:
         end_date: 2010-06
 
 design:
-  theme: shrysr
+  theme: orgrendercv
   page:
     size: a4
     top_margin: 0.5in

@@ -10,7 +10,7 @@ resume.org  ──(C-c r r)──►  src/Shreyas_Ragavan_CV.yaml  ──(render
 
 - **`resume.org`** is the editing surface — all content lives here in plain org-mode.
 - **`org-to-rendercv.el`** (loaded automatically via `.dir-locals.el`) reads the org buffer and regenerates the YAML, then invokes `rendercv render` in a compilation buffer.
-- **`src/shrysr/`** is a custom RenderCV theme (based on `classic`) that controls the visual layout via Jinja2 + Typst templates.
+- **`src/orgrendercv/`** is a custom RenderCV theme (based on `classic`) that controls the visual layout via Jinja2 + Typst templates.
 
 ## Project structure
 
@@ -97,7 +97,7 @@ Key settings and what they do:
 
 | Setting | Effect |
 |---|---|
-| `design.theme: shrysr` | Selects the custom theme in `src/shrysr/` |
+| `design.theme: orgrendercv` | Selects the custom theme in `src/orgrendercv/` |
 | `design.entries.short_second_row: false` | Bullets span full page width; date in right column of title row only |
 | `design.entries.date_and_location_width` | Width of the right date column |
 | `design.sections.show_time_spans_in: []` | Disables automatic duration calculation |

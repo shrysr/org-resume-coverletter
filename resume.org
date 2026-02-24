@@ -1,5 +1,12 @@
 #+STARTUP: overview indent
 
+#+CV_NAME: Shreyas Ragavan
+#+CV_EMAIL: shreyas@fastmail.com
+#+CV_PHONE: +1 647-671-1851
+#+CV_WEBSITE: https://shreyas.ragavan.co
+#+CV_LINKEDIN: shreyasragavan
+#+CV_GITHUB: shrysr
+
 * SUMMARY
 
 Engineer with 13+ years bridging technical execution and business value across manufacturing, energy, and financial services. Combines engineering design and technical sales background to architect production GenAI and MLOps systems on GCP (RAG solutions, custom frameworks), translating stakeholder requirements into deployable products through cross-functional collaboration.

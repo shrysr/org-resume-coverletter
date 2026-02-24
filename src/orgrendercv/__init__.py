@@ -1,23 +1,23 @@
-"""Custom RenderCV theme: ``shrysr``.
+"""Custom RenderCV theme: ``orgrendercv``.
 
-This module defines the Pydantic schema for the ``shrysr`` theme's ``design:`` block.
-RenderCV discovers themes by importing ``<theme>/__init__.py`` and looking for a model
-class whose name ends in ``Theme`` (here: ``ShrysrTheme``).
+This module defines the Pydantic schema for the ``orgrendercv`` theme's ``design:``
+block.  RenderCV discovers themes by importing ``<theme>/__init__.py`` and looking for
+a model class whose name ends in ``Theme`` (here: ``OrgrendercvTheme``).
 
 How it fits into the pipeline
 ------------------------------
 1. ``resume.org``  →  ``org-to-rendercv.el``  →  ``src/Shreyas_Ragavan_CV.yaml``
 2. ``rendercv render Shreyas_Ragavan_CV.yaml`` reads the ``design:`` block in the YAML,
-   validates it against ``ShrysrTheme``, and passes the resulting object to the Jinja2
-   templates in ``src/shrysr/``.
+   validates it against ``OrgrendercvTheme``, and passes the resulting object to the
+   Jinja2 templates in ``src/orgrendercv/``.
 3. The templates produce a ``.typ`` (Typst) source file which is compiled to PDF.
 
 Customisation points
 ---------------------
 - **YAML** — set any ``design.*`` key; the field defaults in this file apply for keys
   that are omitted from the YAML.
-- **Typst templates** — ``.j2.typ`` files in ``src/shrysr/`` and ``src/shrysr/entries/``
-  control the final visual layout.
+- **Typst templates** — ``.j2.typ`` files in ``src/orgrendercv/`` and
+  ``src/orgrendercv/entries/`` control the final visual layout.
 - **Colors / fonts** — change ``design.colors.*`` and ``design.typography.*`` in the
   YAML without touching any template.
 """
@@ -995,20 +995,20 @@ class Templates(BaseModelWithoutExtraKeys):
     )
 
 
-class ShrysrTheme(BaseModelWithoutExtraKeys):
-    """Root design model for the ``shrysr`` RenderCV theme.
+class OrgrendercvTheme(BaseModelWithoutExtraKeys):
+    """Root design model for the ``orgrendercv`` RenderCV theme.
 
-    RenderCV discovers this class by importing ``src/shrysr/__init__.py`` and
+    RenderCV discovers this class by importing ``src/orgrendercv/__init__.py`` and
     searching for a class whose name ends in ``Theme``.  The ``theme`` field is a
     discriminator literal so RenderCV can select the right model when validating
-    ``design.theme: shrysr`` in the YAML.
+    ``design.theme: orgrendercv`` in the YAML.
 
     All sub-models carry sensible defaults; override any field in the YAML
-    ``design:`` block.  The Jinja2 templates in ``src/shrysr/`` receive the
+    ``design:`` block.  The Jinja2 templates in ``src/orgrendercv/`` receive the
     fully-validated instance as ``design``.
     """
 
-    theme: Literal["shrysr"] = "shrysr"
+    theme: Literal["orgrendercv"] = "orgrendercv"
     page: Page = pydantic.Field(default_factory=Page)
     colors: Colors = pydantic.Field(default_factory=Colors)
     typography: Typography = pydantic.Field(default_factory=Typography)

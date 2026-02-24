@@ -12,7 +12,7 @@ resume.org  ──(C-c r r)──►  src/Shreyas_Ragavan_CV.yaml  ──(render
 - **`org-to-rendercv.el`** is the Emacs Lisp exporter. It parses `resume.org` and writes
   the YAML, then calls `rendercv render` in a compilation buffer.
 - **`src/Shreyas_Ragavan_CV.yaml`** is auto-generated. Do not edit it directly.
-- **`src/shrysr/`** is the custom RenderCV theme (Pydantic schema + Jinja2/Typst templates).
+- **`src/orgrendercv/`** is the custom RenderCV theme (Pydantic schema + Jinja2/Typst templates).
 
 ## Development commands
 
@@ -40,24 +40,26 @@ C-c r r   →  runs resume/org-to-rendercv (parse org → write YAML → render)
 | `org-to-rendercv.el` | Exporter: org → YAML → rendercv render |
 | `.dir-locals.el` | Auto-loads exporter, binds C-c r r |
 | `src/Shreyas_Ragavan_CV.yaml` | Generated RenderCV input (do not edit) |
-| `src/shrysr/__init__.py` | Pydantic model for all theme design parameters |
-| `src/shrysr/SectionBeginning.j2.typ` | Section titles (uses `#upper[...]`) |
-| `src/shrysr/entries/ExperienceEntry.j2.typ` | Experience entry layout |
-| `src/shrysr/entries/EducationEntry.j2.typ` | Education entry layout |
+| `src/orgrendercv/__init__.py` | Pydantic model for all theme design parameters |
+| `src/orgrendercv/SectionBeginning.j2.typ` | Section titles (uses `#upper[...]`) |
+| `src/orgrendercv/entries/ExperienceEntry.j2.typ` | Experience entry layout |
+| `src/orgrendercv/entries/EducationEntry.j2.typ` | Education entry layout |
 | `requirements.txt` | `rendercv[full]==2.6` |
 
 ## Org source structure
 
-Personal info is stored as `\newcommand{}{}` LaTeX headers in `resume.org`:
+Personal info is stored as `#+CV_*` org keywords at the top of `resume.org`:
 
 ```org
-#+LATEX_HEADER: \newcommand{\resumename}{Shreyas Ragavan}
-#+LATEX_HEADER: \newcommand{\resumeemail}{...}
-#+LATEX_HEADER: \newcommand{\resumephone}{...}
-#+LATEX_HEADER: \newcommand{\resumewebsite}{...}
-#+LATEX_HEADER: \newcommand{\resumelinkedin}{...}
-#+LATEX_HEADER: \newcommand{\resumegithub}{...}
+#+CV_NAME: Shreyas Ragavan
+#+CV_EMAIL: shreyas@fastmail.com
+#+CV_PHONE: +1 647-671-1851
+#+CV_WEBSITE: https://shreyas.ragavan.co
+#+CV_LINKEDIN: shreyasragavan    ← username only, not full URL
+#+CV_GITHUB: shrysr              ← username only, not full URL
 ```
+
+These are read by `resume/extract-personal-info` via `org-collect-keywords`.
 
 Experience and education entries use org properties:
 

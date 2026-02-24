@@ -9,43 +9,26 @@
 
 ;;; Personal info extraction
 
-(defun resume/get-latex-command-value (command-name)
-  "Extract value from a LaTeX \\newcommand definition in current buffer."
-  (save-excursion
-    (goto-char (point-min))
-    (when (re-search-forward
-           (format "\\\\newcommand{\\\\%s}{\\([^}]*\\)}" command-name) nil t)
-      (string-trim (match-string 1)))))
-
-(defun resume/get-def-value (command-name)
-  "Extract value from a LaTeX \\def definition in current buffer."
-  (save-excursion
-    (goto-char (point-min))
-    (when (re-search-forward
-           (format "\\\\def\\\\%s{\\([^}]*\\)}" command-name) nil t)
-      (string-trim (match-string 1)))))
-
 (defun resume/extract-personal-info ()
-  "Return an alist of personal info from LaTeX \\newcommand headers."
-  (list
-   (cons 'name     (resume/get-latex-command-value "resumename"))
-   (cons 'email    (resume/get-latex-command-value "resumeemail"))
-   (cons 'phone    (resume/get-latex-command-value "resumephone"))
-   (cons 'website  (resume/get-latex-command-value "resumewebsite"))
-   (cons 'linkedin (resume/get-latex-command-value "resumelinkedin"))
-   (cons 'github   (resume/get-latex-command-value "resumegithub"))))
+  "Return an alist of personal info from #+CV_* org keywords.
 
-;;; LinkedIn/GitHub username extraction
-
-(defun resume/linkedin-username (url)
-  "Extract LinkedIn username from a profile URL."
-  (when (and url (string-match "linkedin\\.com/in/\\([^/]+\\)" url))
-    (match-string 1 url)))
-
-(defun resume/github-username (url)
-  "Extract GitHub username from a profile URL."
-  (when (and url (string-match "github\\.com/\\([^/]+\\)$" url))
-    (match-string 1 url)))
+Reads the following file-level keywords from the current buffer:
+  #+CV_NAME:     Full name
+  #+CV_EMAIL:    Email address
+  #+CV_PHONE:    Phone number (international format)
+  #+CV_WEBSITE:  Personal website URL
+  #+CV_LINKEDIN: LinkedIn username (not the full URL)
+  #+CV_GITHUB:   GitHub username (not the full URL)"
+  (let ((kws (org-collect-keywords
+              '("CV_NAME" "CV_EMAIL" "CV_PHONE"
+                "CV_WEBSITE" "CV_LINKEDIN" "CV_GITHUB"))))
+    (list
+     (cons 'name     (cadr (assoc "CV_NAME"     kws)))
+     (cons 'email    (cadr (assoc "CV_EMAIL"    kws)))
+     (cons 'phone    (cadr (assoc "CV_PHONE"    kws)))
+     (cons 'website  (cadr (assoc "CV_WEBSITE"  kws)))
+     (cons 'linkedin (cadr (assoc "CV_LINKEDIN" kws)))
+     (cons 'github   (cadr (assoc "CV_GITHUB"   kws))))))
 
 ;;; Org-mode tree parsing
 
@@ -258,8 +241,9 @@ Examples:
          (email    (alist-get 'email info))
          (phone    (alist-get 'phone info))
          (website  (alist-get 'website info))
-         (linkedin (resume/linkedin-username (alist-get 'linkedin info)))
-         (github   (resume/github-username (alist-get 'github info)))
+         ;; CV_LINKEDIN and CV_GITHUB store plain usernames, not full URLs
+         (linkedin (alist-get 'linkedin info))
+         (github   (alist-get 'github info))
          (tree     (org-element-parse-buffer))
          (summary-hl   (resume/get-top-level-heading "SUMMARY"))
          (skills-hl    (resume/get-top-level-heading "SKILLS"))
@@ -300,7 +284,7 @@ Examples:
 (defun resume/design-block ()
   "Return the static design: YAML block."
   "design:
-  theme: shrysr
+  theme: orgrendercv
   page:
     size: a4
     top_margin: 0.5in
