@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(emacs:*)",
+      "Bash(./test-export.sh)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:docs.rendercv.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:typevar.dev)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv-pipeline/main/requirements.txt\" 2>/dev/null || echo \"Failed\")",
+      "Bash(curl -s \"https://api.github.com/repos/rendercv/rendercv-pipeline/contents/.github/workflows\" 2>/dev/null | python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f['name']\\) for f in data]\" 2>/dev/null || echo \"Failed\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv-pipeline/main/.github/workflows/rendercv.yaml\" 2>/dev/null)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv-pipeline/main/README.md\" 2>/dev/null | head -100)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv/main/examples/John_Doe_ClassicTheme_CV.yaml\" 2>/dev/null | head -150)",
+      "Bash(curl -s \"https://api.github.com/repos/rendercv/rendercv/contents/src/rendercv/renderer/templater/templates/typst/classic\" 2>/dev/null | python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f['name']\\) for f in data]\" 2>/dev/null || echo \"Failed\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv/main/src/rendercv/renderer/templater/templates/typst/Preamble.j2.typ\" 2>/dev/null | head -80)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/rendercv/rendercv/main/src/rendercv/renderer/templater/templates/typst/Preamble.j2.typ\" 2>/dev/null | tail -50)",
+      "Bash(venv/bin/pip show rendercv 2>/dev/null || echo \"rendercv not installed\")",
+      "Bash(mkdir -p /Users/shrysr/projects/org-resume-coverletter/src && venv/bin/rendercv create-theme shrysr --based-on classic 2>&1)",
+      "Bash(venv/bin/rendercv create-theme --help)",
+      "Bash(cd /Users/shrysr/projects/org-resume-coverletter/src && ../venv/bin/rendercv create-theme shrysr 2>&1 && ls -la)",
+      "Bash(venv/bin/rendercv render --help 2>&1 | head -30)",
+      "Bash(/Users/shrysr/projects/org-resume-coverletter/venv/bin/rendercv render --help 2>&1 | head -30)",
+      "Bash(/Users/shrysr/projects/org-resume-coverletter/venv/bin/python -c \"import rendercv; print\\(rendercv.__file__\\)\")",
+      "Bash(../venv/bin/rendercv render Shreyas_Ragavan_CV.yaml 2>&1)",
+      "Bash(/Users/shrysr/projects/org-resume-coverletter/venv/bin/python -c \"import typst; print\\(typst.__version__\\)\" 2>/dev/null; ls /Users/shrysr/projects/org-resume-coverletter/venv/lib/python3.12/site-packages/typst/)",
+      "Bash(../venv/bin/rendercv render Shreyas_Ragavan_CV.yaml 2>&1 && ls rendercv_output/*.png)",
+      "Bash(cd /Users/shrysr/projects/org-resume-coverletter/src && ../venv/bin/rendercv render Shreyas_Ragavan_CV.yaml 2>&1 | tail -20)",
+      "Bash(cd /Users/shrysr/projects/org-resume-coverletter && sed -i '' \\\\\n  's/^\\\\\\(        end_date: \\\\\\)nil$/\\\\1present/' \\\\\n  src/Shreyas_Ragavan_CV.yaml)",
+      "Bash(cd /Users/shrysr/projects/org-resume-coverletter/src && ../venv/bin/rendercv render Shreyas_Ragavan_CV.yaml 2>&1 | grep -E \"ready|error|Error\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
