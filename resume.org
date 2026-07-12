@@ -6,6 +6,7 @@
 #+CV_WEBSITE: https://shreyas.ragavan.co
 #+CV_LINKEDIN: shreyasragavan
 #+CV_GITHUB: shrysr
+#+CV_VIA_BLURB: Work Authorisation: Canadian Citizen/TN status
 
 * SUMMARY
 
@@ -92,3 +93,4 @@
    :LOCATION: India
    :ID:       1EA79A4E-89C9-4C62-880C-DE9B3CC1C12A
    :END:
+

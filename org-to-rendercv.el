@@ -21,14 +21,15 @@ Reads the following file-level keywords from the current buffer:
   #+CV_GITHUB:   GitHub username (not the full URL)"
   (let ((kws (org-collect-keywords
               '("CV_NAME" "CV_EMAIL" "CV_PHONE"
-                "CV_WEBSITE" "CV_LINKEDIN" "CV_GITHUB"))))
+                "CV_WEBSITE" "CV_LINKEDIN" "CV_GITHUB" "CV_VIA_BLURB"))))
     (list
-     (cons 'name     (cadr (assoc "CV_NAME"     kws)))
-     (cons 'email    (cadr (assoc "CV_EMAIL"    kws)))
-     (cons 'phone    (cadr (assoc "CV_PHONE"    kws)))
-     (cons 'website  (cadr (assoc "CV_WEBSITE"  kws)))
-     (cons 'linkedin (cadr (assoc "CV_LINKEDIN" kws)))
-     (cons 'github   (cadr (assoc "CV_GITHUB"   kws))))))
+     (cons 'name      (cadr (assoc "CV_NAME"      kws)))
+     (cons 'email     (cadr (assoc "CV_EMAIL"     kws)))
+     (cons 'phone     (cadr (assoc "CV_PHONE"     kws)))
+     (cons 'website   (cadr (assoc "CV_WEBSITE"   kws)))
+     (cons 'linkedin  (cadr (assoc "CV_LINKEDIN"  kws)))
+     (cons 'github    (cadr (assoc "CV_GITHUB"    kws)))
+     (cons 'via_blurb (cadr (assoc "CV_VIA_BLURB" kws))))))
 
 ;;; Org-mode tree parsing
 
@@ -237,13 +238,14 @@ Examples:
 
 (defun resume/generate-yaml (info)
   "Generate the full RenderCV YAML string from INFO alist."
-  (let* ((name     (alist-get 'name info))
-         (email    (alist-get 'email info))
-         (phone    (alist-get 'phone info))
-         (website  (alist-get 'website info))
+  (let* ((name      (alist-get 'name info))
+         (email     (alist-get 'email info))
+         (phone     (alist-get 'phone info))
+         (website   (alist-get 'website info))
          ;; CV_LINKEDIN and CV_GITHUB store plain usernames, not full URLs
-         (linkedin (alist-get 'linkedin info))
-         (github   (alist-get 'github info))
+         (linkedin  (alist-get 'linkedin info))
+         (github    (alist-get 'github info))
+         (via_blurb (alist-get 'via_blurb info))
          (tree     (org-element-parse-buffer))
          (summary-hl   (resume/get-top-level-heading "SUMMARY"))
          (skills-hl    (resume/get-top-level-heading "SKILLS"))
@@ -255,6 +257,8 @@ Examples:
      "# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.6/schema.json\n"
      "cv:\n"
      (format "  name: %s\n" (resume/yaml-string name))
+     (when (and via_blurb (not (string-empty-p via_blurb)))
+       (format "  headline: %s\n" (resume/yaml-string via_blurb)))
      (format "  email: %s\n" (resume/yaml-string email))
      (let* ((phones (mapcar #'string-trim (split-string phone "/")))
             (multi  (> (length phones) 1)))

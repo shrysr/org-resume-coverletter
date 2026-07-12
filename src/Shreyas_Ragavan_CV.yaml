@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.6/schema.json
 cv:
   name: "Shreyas Ragavan"
+  headline: "Work Authorisation: Canadian Citizen/TN status"
   email: "shreyas@fastmail.com"
   website: https://shreyas.ragavan.co
   social_networks:

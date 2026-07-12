@@ -19,14 +19,17 @@
   [
 {% endif %}
 {% endif %}
+{% if cv.headline %}
+#block(height: 0pt, width: 100%, above: 0pt, below: 0pt)[
+  #place(top + right, dy: -0.85cm)[
+    #text(size: 7.5pt, weight: "semibold", fill: rgb(37, 99, 149))[{{ cv.headline }}]
+  ]
+]
+{% endif %}
 {% if cv.name %}
 = {{ cv.name }}
 {% endif %}
 
-{% if cv.headline %}
-  #headline([{{ cv.headline }}])
-
-{% endif %}
 #connections(
 {% for connection in cv.connections %}
   [{{ connection }}],
