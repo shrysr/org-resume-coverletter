@@ -256,11 +256,20 @@ Examples:
      "cv:\n"
      (format "  name: %s\n" (resume/yaml-string name))
      (format "  email: %s\n" (resume/yaml-string email))
-     (format "  phone: %s\n" (resume/yaml-string phone))
+     (let* ((phones (mapcar #'string-trim (split-string phone "/")))
+            (multi  (> (length phones) 1)))
+       (if multi
+           ""
+         (format "  phone: %s\n" (resume/yaml-string phone))))
      (format "  website: %s\n" website)
      "  social_networks:\n"
      (format "    - network: LinkedIn\n      username: %s\n" linkedin)
      (format "    - network: GitHub\n      username: %s\n" github)
+     (let* ((phones (mapcar #'string-trim (split-string phone "/"))))
+       (when (> (length phones) 1)
+         (concat "  custom_connections:\n"
+                 (format "    - fontawesome_icon: phone\n      placeholder: %s\n      url: null\n"
+                         (resume/yaml-string (mapconcat #'identity phones " / "))))))
      "\n  sections:\n"
      ;; Summary
      (when summary-hl (resume/format-summary summary-hl))
@@ -310,6 +319,7 @@ Examples:
       section_titles: Source Sans 3
     font_size:
       body: 10pt
+      connections: 9pt
     alignment: justified
   header:
     alignment: center
@@ -319,6 +329,7 @@ Examples:
     connections:
       show_icons: true
       separator: \" | \"
+      space_between_connections: 0.2cm
       phone_number_format: international
   section_titles:
     type: with_partial_line

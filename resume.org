@@ -2,18 +2,18 @@
 
 #+CV_NAME: Shreyas Ragavan
 #+CV_EMAIL: shreyas@fastmail.com
-#+CV_PHONE: +1 647-671-1851
+#+CV_PHONE: +1 279-258-9720 / 647-671-1851
 #+CV_WEBSITE: https://shreyas.ragavan.co
 #+CV_LINKEDIN: shreyasragavan
 #+CV_GITHUB: shrysr
 
 * SUMMARY
 
-Engineer with 13+ years bridging technical execution and business value across manufacturing, energy, and financial services. Combines engineering design and technical sales background to architect production GenAI and MLOps systems on GCP (RAG solutions, custom frameworks), translating stakeholder requirements into deployable products through cross-functional collaboration.
+13+ years of experience bridging technical execution and business value across manufacturing, energy, and financial services. Combines engineering design and technical sales background to architect production GenAI and MLOps systems on GCP (RAG solutions, custom frameworks), translating stakeholder requirements into deployable products through cross-functional collaboration.
 
 * SKILLS
 
-- *Machine Learning & AI:* Python, R, PyTorch, Generative AI, LLMs, LangChain, NLP, Statistical Modeling, Hyperparameter Tuning
+- *Machine Learning & AI:* Python, R, PyTorch, Generative AI, LLMs, LangChain, NLP, Statistical Modeling, RAG
 - *MLOps & Cloud:* GCP (Vertex AI, BigQuery, Looker, AlloyDB), Kubernetes (KFP), Docker, CI/CD, Jira, Observability (Cloud Logger, Cloud Traces)
 - *Data Engineering:* Airflow, ETL Pipelines, Data Modeling, SQL, DuckDB, Data Governance (Collibra)
 - *Core Technologies:* Git, Bash, make, Linux, Java, HTML, CSS
@@ -27,9 +27,9 @@ Engineer with 13+ years bridging technical execution and business value across m
    :LOCATION: Vancouver, Canada
    :END:
 
-- Lead developer of 3+ production AI products serving *160k+ requests/day* to LLM's via Vertex AI, with Looker, Cloud Logger, and Cloud Traces for observability; established design patterns and documentation ensuring long-term maintainability.
+- Lead engineer of 3+ production AI products serving *160k+ requests/day* to LLM's via Vertex AI, with Looker, Cloud Logger, and Cloud Traces for observability; established design patterns and documentation ensuring long-term maintainability.
 
-- Lead maintainer of a RAG-based live agent assistance solution with 15+ model variants, call summarization, and topic modeling systems processing *8k+ calls*; introduced test-driven development and quality auditing practices, streamlining debugging and stakeholder alignment.
+- Lead maintainer of a RAG-based live agent assistance solution with 15+ model variants, call summarization, and topic modeling systems processing *8k+ calls* ; introduced test-driven development and quality auditing practices, streamlining debugging and stakeholder alignment.
 
 - Accelerated development with AI-assisted code refactoring (reducing *months to 1 week*), reusable ML frameworks, and CI/CD pipelines, saving *200+ hours* per project while mentoring junior engineers on best practices.
 
@@ -40,7 +40,7 @@ Engineer with 13+ years bridging technical execution and business value across m
    :LOCATION: Vancouver, Canada
    :END:
 - Proposed, developed, and deployed R (Shiny) dashboard with 30+ interactive charts using plotly/ggplot2, containerized with Docker on open-source Shiny server, enabling self-service KPI monitoring.
-- Engineered automated data pipelines and self-service apps reducing report generation time by *90% (from 7 hours to <1 hour per request)*; developed K-Means clustering model for customer engagement analysis.
+- Engineered automated data pipelines and self-service apps reducing report generation time by *90% (from 7 hours to <1 hour per request)* x; developed K-Means clustering model for customer engagement analysis.
 - Designed analytics architecture blueprint and evaluated BI solutions for product requirements; maintained production systems using SQL, Java, Python, HTML/CSS for debugging and feature development.
 
 ** Data Science Consultant
@@ -82,15 +82,13 @@ Engineer with 13+ years bridging technical execution and business value across m
    :PROPERTIES:
    :INSTITUTION: University of Leeds
    :PERIOD: Sep 2010 - Nov 2011
-   :LOCATION: United Kingdom
+   :LOCATION: UK
    :END:
 
 ** B.Tech. Automotive Design Engineering
    :PROPERTIES:
-   :INSTITUTION: University of Petroleum \\& Energy Studies
+   :INSTITUTION: University of Petroleum & Energy Studies
    :PERIOD: Aug 2006 - Jun 2010
    :LOCATION: India
+   :ID:       1EA79A4E-89C9-4C62-880C-DE9B3CC1C12A
    :END:
-   
-
-   
